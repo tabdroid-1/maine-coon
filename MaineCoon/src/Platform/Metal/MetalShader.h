@@ -1,0 +1,8 @@
+//
+// Created by Tristan Zippert on 7/21/22.
+//
+
+#ifndef TABBYGAMEENGINE_METALSHADER_H
+#define TABBYGAMEENGINE_METALSHADER_H
+
+#endif //TABBYGAMEENGINE_METALSHADER_H
