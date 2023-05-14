@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libMaineCoon.a CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.o CMakeFiles/MaineCoon.dir/vendor/imgui/imgui.cpp.o CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_draw.cpp.o CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_widgets.cpp.o CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_tables.cpp.o CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_demo.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libMaineCoon.a
