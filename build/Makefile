@@ -227,30 +227,30 @@ imgui/fast:
 .PHONY : imgui/fast
 
 #=============================================================================
-# Target rules for targets named TabbySandbox
+# Target rules for targets named MaineCoonApp
 
 # Build rule for target.
-TabbySandbox: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 TabbySandbox
-.PHONY : TabbySandbox
+MaineCoonApp: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MaineCoonApp
+.PHONY : MaineCoonApp
 
 # fast build rule for target.
-TabbySandbox/fast:
-	$(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/TabbySandbox.dir/build.make MaineCoonApp/CMakeFiles/TabbySandbox.dir/build
-.PHONY : TabbySandbox/fast
+MaineCoonApp/fast:
+	$(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/MaineCoonApp.dir/build.make MaineCoonApp/CMakeFiles/MaineCoonApp.dir/build
+.PHONY : MaineCoonApp/fast
 
 #=============================================================================
-# Target rules for targets named copy_assets_sandbox
+# Target rules for targets named copy_assets_app
 
 # Build rule for target.
-copy_assets_sandbox: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 copy_assets_sandbox
-.PHONY : copy_assets_sandbox
+copy_assets_app: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 copy_assets_app
+.PHONY : copy_assets_app
 
 # fast build rule for target.
-copy_assets_sandbox/fast:
-	$(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/build.make MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/build
-.PHONY : copy_assets_sandbox/fast
+copy_assets_app/fast:
+	$(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/copy_assets_app.dir/build.make MaineCoonApp/CMakeFiles/copy_assets_app.dir/build
+.PHONY : copy_assets_app/fast
 
 # Help Target
 help:
@@ -264,11 +264,11 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... copy_assets_sandbox"
+	@echo "... copy_assets_app"
 	@echo "... uninstall"
 	@echo "... update_mappings"
 	@echo "... MaineCoon"
-	@echo "... TabbySandbox"
+	@echo "... MaineCoonApp"
 	@echo "... glfw"
 	@echo "... imgui"
 .PHONY : help

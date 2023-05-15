@@ -20,7 +20,9 @@ set(PROJECT_VENDOR_DIR "${CMAKE_CURRENT_LIST_DIR}/vendor")
 # For GTK
 # The `pkg_check_modules` function is created with this call
 find_package(PkgConfig REQUIRED)
+find_package(OpenGL REQUIRED)
 
+include_directories( ${OPENGL_INCLUDE_DIRS} )
 
 # Vendor/Libraries
 set(IMGUI "${PROJECT_VENDOR_DIR}/imgui")
@@ -46,6 +48,8 @@ list(APPEND PROJECT_SOURCES
         "${IMGUI}/imgui_tables.cpp"
         "${IMGUI}/imgui_demo.cpp"
         "${IMGUI}/imgui_internal.h"
+        "${IMGUI}/backends/imgui_impl_opengl3.cpp"
+        "${IMGUI}/backends/imgui_impl_glfw.cpp"
 
         "${STB}/stb_image.h"
         # -----------------------------------------
@@ -68,11 +72,11 @@ add_subdirectory(${GLFW})
 add_subdirectory(${PROJECT_VENDOR_DIR}) # ImGui. It needs glfw so cmake file is at one previous folder to be able to access glfw.
 
 target_link_libraries(${PROJECT_NAME} PUBLIC
-        "spdlog"
         "glfw"
         "glm"
         "imgui"
-        # "${MacLib}"
+        ${OPENGL_LIBRARIES}
+        "${MacLib}"
         )
 # target_link_libraries()
 
@@ -105,33 +109,17 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE GLFW_INCLUDE_NONE=1 Dosmesa=t
 #     target_compile_definitions(${PROJECT_NAME} PUBLIC TB_DEBUG=1 TB_PLATFORM_WINDOWS=1 TB_BUILD_DLL=1 BUILD_SHARED_LIBS=1)
 
 # endif(WIN32)
-# if(APPLE)
-#     # add_compile_definitions(RC_PLATFORM_MAC)
-#     # add_compile_definitions(RC_PLATFORM_UNIX)
-#     set(WINDOW
-#             src/Platform/Mac/MacWindow.cpp
-#             src/Platform/Mac/MacWindow.h
-#             src/Platform/Mac/MacUtils.mm
-#             # src/Platform/Mac/processordetection.cpp
-#             )
+if(APPLE)
 
-#     # file(GLOB_RECURSE METAL "src/Platform/Metal/*.cpp" "src/Platform/Metal/*.h")
+    # set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -framework AppKit -framework Metal -framework Cocoa")
 
-#     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -framework AppKit -framework Metal -framework Cocoa")
+    set(MacLib
+        "-framework Foundation"
+        "-framework Cocoa"
+        "-framework OpenGL"
+        )
 
-
-#     # add_subdirectory(external/corrosion)
-
-#     target_compile_definitions(${PROJECT_NAME} PUBLIC TB_DEBUG=1 TB_PLATFORM_MACOS=1)
-#     set(MacLib
-#         "-framework Foundation"
-#         "-framework Cocoa"
-#         objc
-#         stdc++
-#         )
-#     # target_link_libraries(${PROJECT_NAME} stdc++ "-framework Foundation" "-framework Cocoa" objc)
-
-# endif(APPLE)
+endif(APPLE)
 
 ###################################################################
 # Precompiled header

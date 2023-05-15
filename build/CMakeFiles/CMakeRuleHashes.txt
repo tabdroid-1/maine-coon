@@ -1,4 +1,4 @@
 # Hashes of file build rules.
 67ce9352a9ddf8d3df7f0a2ac4de6c3d MaineCoon/vendor/GLFW/src/CMakeFiles/update_mappings
 9dfda0d870f570a4b14eb58619e3bb24 MaineCoon/vendor/glm/CMakeFiles/uninstall
-e9276213f75611334847d2e411bfe983 MaineCoonApp/CMakeFiles/copy_assets_sandbox
+e9276213f75611334847d2e411bfe983 MaineCoonApp/CMakeFiles/copy_assets_app

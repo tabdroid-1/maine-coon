@@ -190,29 +190,125 @@ cmake_pch_arm64.hxx.s:
 	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx.s
 .PHONY : cmake_pch_arm64.hxx.s
 
-src/Core/Application.o: src/Core/Application.cpp.o
-.PHONY : src/Core/Application.o
+src/MaineCoon/Core/Application.o: src/MaineCoon/Core/Application.cpp.o
+.PHONY : src/MaineCoon/Core/Application.o
 
 # target to build an object file
-src/Core/Application.cpp.o:
-	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.o
-.PHONY : src/Core/Application.cpp.o
+src/MaineCoon/Core/Application.cpp.o:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.o
+.PHONY : src/MaineCoon/Core/Application.cpp.o
 
-src/Core/Application.i: src/Core/Application.cpp.i
-.PHONY : src/Core/Application.i
+src/MaineCoon/Core/Application.i: src/MaineCoon/Core/Application.cpp.i
+.PHONY : src/MaineCoon/Core/Application.i
 
 # target to preprocess a source file
-src/Core/Application.cpp.i:
-	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.i
-.PHONY : src/Core/Application.cpp.i
+src/MaineCoon/Core/Application.cpp.i:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.i
+.PHONY : src/MaineCoon/Core/Application.cpp.i
 
-src/Core/Application.s: src/Core/Application.cpp.s
-.PHONY : src/Core/Application.s
+src/MaineCoon/Core/Application.s: src/MaineCoon/Core/Application.cpp.s
+.PHONY : src/MaineCoon/Core/Application.s
 
 # target to generate assembly for a file
-src/Core/Application.cpp.s:
-	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.s
-.PHONY : src/Core/Application.cpp.s
+src/MaineCoon/Core/Application.cpp.s:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.s
+.PHONY : src/MaineCoon/Core/Application.cpp.s
+
+src/MaineCoon/Graphics/Image.o: src/MaineCoon/Graphics/Image.cpp.o
+.PHONY : src/MaineCoon/Graphics/Image.o
+
+# target to build an object file
+src/MaineCoon/Graphics/Image.cpp.o:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.o
+.PHONY : src/MaineCoon/Graphics/Image.cpp.o
+
+src/MaineCoon/Graphics/Image.i: src/MaineCoon/Graphics/Image.cpp.i
+.PHONY : src/MaineCoon/Graphics/Image.i
+
+# target to preprocess a source file
+src/MaineCoon/Graphics/Image.cpp.i:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.i
+.PHONY : src/MaineCoon/Graphics/Image.cpp.i
+
+src/MaineCoon/Graphics/Image.s: src/MaineCoon/Graphics/Image.cpp.s
+.PHONY : src/MaineCoon/Graphics/Image.s
+
+# target to generate assembly for a file
+src/MaineCoon/Graphics/Image.cpp.s:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.s
+.PHONY : src/MaineCoon/Graphics/Image.cpp.s
+
+src/MaineCoon/Input/Input.o: src/MaineCoon/Input/Input.cpp.o
+.PHONY : src/MaineCoon/Input/Input.o
+
+# target to build an object file
+src/MaineCoon/Input/Input.cpp.o:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.o
+.PHONY : src/MaineCoon/Input/Input.cpp.o
+
+src/MaineCoon/Input/Input.i: src/MaineCoon/Input/Input.cpp.i
+.PHONY : src/MaineCoon/Input/Input.i
+
+# target to preprocess a source file
+src/MaineCoon/Input/Input.cpp.i:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.i
+.PHONY : src/MaineCoon/Input/Input.cpp.i
+
+src/MaineCoon/Input/Input.s: src/MaineCoon/Input/Input.cpp.s
+.PHONY : src/MaineCoon/Input/Input.s
+
+# target to generate assembly for a file
+src/MaineCoon/Input/Input.cpp.s:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.s
+.PHONY : src/MaineCoon/Input/Input.cpp.s
+
+vendor/imgui/backends/imgui_impl_glfw.o: vendor/imgui/backends/imgui_impl_glfw.cpp.o
+.PHONY : vendor/imgui/backends/imgui_impl_glfw.o
+
+# target to build an object file
+vendor/imgui/backends/imgui_impl_glfw.cpp.o:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.o
+.PHONY : vendor/imgui/backends/imgui_impl_glfw.cpp.o
+
+vendor/imgui/backends/imgui_impl_glfw.i: vendor/imgui/backends/imgui_impl_glfw.cpp.i
+.PHONY : vendor/imgui/backends/imgui_impl_glfw.i
+
+# target to preprocess a source file
+vendor/imgui/backends/imgui_impl_glfw.cpp.i:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.i
+.PHONY : vendor/imgui/backends/imgui_impl_glfw.cpp.i
+
+vendor/imgui/backends/imgui_impl_glfw.s: vendor/imgui/backends/imgui_impl_glfw.cpp.s
+.PHONY : vendor/imgui/backends/imgui_impl_glfw.s
+
+# target to generate assembly for a file
+vendor/imgui/backends/imgui_impl_glfw.cpp.s:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.s
+.PHONY : vendor/imgui/backends/imgui_impl_glfw.cpp.s
+
+vendor/imgui/backends/imgui_impl_opengl3.o: vendor/imgui/backends/imgui_impl_opengl3.cpp.o
+.PHONY : vendor/imgui/backends/imgui_impl_opengl3.o
+
+# target to build an object file
+vendor/imgui/backends/imgui_impl_opengl3.cpp.o:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.o
+.PHONY : vendor/imgui/backends/imgui_impl_opengl3.cpp.o
+
+vendor/imgui/backends/imgui_impl_opengl3.i: vendor/imgui/backends/imgui_impl_opengl3.cpp.i
+.PHONY : vendor/imgui/backends/imgui_impl_opengl3.i
+
+# target to preprocess a source file
+vendor/imgui/backends/imgui_impl_opengl3.cpp.i:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.i
+.PHONY : vendor/imgui/backends/imgui_impl_opengl3.cpp.i
+
+vendor/imgui/backends/imgui_impl_opengl3.s: vendor/imgui/backends/imgui_impl_opengl3.cpp.s
+.PHONY : vendor/imgui/backends/imgui_impl_opengl3.s
+
+# target to generate assembly for a file
+vendor/imgui/backends/imgui_impl_opengl3.cpp.s:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.s
+.PHONY : vendor/imgui/backends/imgui_impl_opengl3.cpp.s
 
 vendor/imgui/imgui.o: vendor/imgui/imgui.cpp.o
 .PHONY : vendor/imgui/imgui.o
@@ -350,9 +446,21 @@ help:
 	@echo "... cmake_pch_arm64.hxx.pch"
 	@echo "... cmake_pch_arm64.hxx.i"
 	@echo "... cmake_pch_arm64.hxx.s"
-	@echo "... src/Core/Application.o"
-	@echo "... src/Core/Application.i"
-	@echo "... src/Core/Application.s"
+	@echo "... src/MaineCoon/Core/Application.o"
+	@echo "... src/MaineCoon/Core/Application.i"
+	@echo "... src/MaineCoon/Core/Application.s"
+	@echo "... src/MaineCoon/Graphics/Image.o"
+	@echo "... src/MaineCoon/Graphics/Image.i"
+	@echo "... src/MaineCoon/Graphics/Image.s"
+	@echo "... src/MaineCoon/Input/Input.o"
+	@echo "... src/MaineCoon/Input/Input.i"
+	@echo "... src/MaineCoon/Input/Input.s"
+	@echo "... vendor/imgui/backends/imgui_impl_glfw.o"
+	@echo "... vendor/imgui/backends/imgui_impl_glfw.i"
+	@echo "... vendor/imgui/backends/imgui_impl_glfw.s"
+	@echo "... vendor/imgui/backends/imgui_impl_opengl3.o"
+	@echo "... vendor/imgui/backends/imgui_impl_opengl3.i"
+	@echo "... vendor/imgui/backends/imgui_impl_opengl3.s"
 	@echo "... vendor/imgui/imgui.o"
 	@echo "... vendor/imgui/imgui.i"
 	@echo "... vendor/imgui/imgui.s"

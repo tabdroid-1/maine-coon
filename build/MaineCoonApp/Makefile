@@ -162,39 +162,39 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-MaineCoonApp/CMakeFiles/TabbySandbox.dir/rule:
-	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MaineCoonApp/CMakeFiles/TabbySandbox.dir/rule
-.PHONY : MaineCoonApp/CMakeFiles/TabbySandbox.dir/rule
+MaineCoonApp/CMakeFiles/MaineCoonApp.dir/rule:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MaineCoonApp/CMakeFiles/MaineCoonApp.dir/rule
+.PHONY : MaineCoonApp/CMakeFiles/MaineCoonApp.dir/rule
 
 # Convenience name for target.
-TabbySandbox: MaineCoonApp/CMakeFiles/TabbySandbox.dir/rule
-.PHONY : TabbySandbox
+MaineCoonApp: MaineCoonApp/CMakeFiles/MaineCoonApp.dir/rule
+.PHONY : MaineCoonApp
 
 # fast build rule for target.
-TabbySandbox/fast:
-	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/TabbySandbox.dir/build.make MaineCoonApp/CMakeFiles/TabbySandbox.dir/build
-.PHONY : TabbySandbox/fast
+MaineCoonApp/fast:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/MaineCoonApp.dir/build.make MaineCoonApp/CMakeFiles/MaineCoonApp.dir/build
+.PHONY : MaineCoonApp/fast
 
 # Convenience name for target.
-MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/rule:
-	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/rule
-.PHONY : MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/rule
+MaineCoonApp/CMakeFiles/copy_assets_app.dir/rule:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MaineCoonApp/CMakeFiles/copy_assets_app.dir/rule
+.PHONY : MaineCoonApp/CMakeFiles/copy_assets_app.dir/rule
 
 # Convenience name for target.
-copy_assets_sandbox: MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/rule
-.PHONY : copy_assets_sandbox
+copy_assets_app: MaineCoonApp/CMakeFiles/copy_assets_app.dir/rule
+.PHONY : copy_assets_app
 
 # fast build rule for target.
-copy_assets_sandbox/fast:
-	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/build.make MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/build
-.PHONY : copy_assets_sandbox/fast
+copy_assets_app/fast:
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/copy_assets_app.dir/build.make MaineCoonApp/CMakeFiles/copy_assets_app.dir/build
+.PHONY : copy_assets_app/fast
 
 src/MaincoonApp.o: src/MaincoonApp.cpp.o
 .PHONY : src/MaincoonApp.o
 
 # target to build an object file
 src/MaincoonApp.cpp.o:
-	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/TabbySandbox.dir/build.make MaineCoonApp/CMakeFiles/TabbySandbox.dir/src/MaincoonApp.cpp.o
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/MaineCoonApp.dir/build.make MaineCoonApp/CMakeFiles/MaineCoonApp.dir/src/MaincoonApp.cpp.o
 .PHONY : src/MaincoonApp.cpp.o
 
 src/MaincoonApp.i: src/MaincoonApp.cpp.i
@@ -202,7 +202,7 @@ src/MaincoonApp.i: src/MaincoonApp.cpp.i
 
 # target to preprocess a source file
 src/MaincoonApp.cpp.i:
-	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/TabbySandbox.dir/build.make MaineCoonApp/CMakeFiles/TabbySandbox.dir/src/MaincoonApp.cpp.i
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/MaineCoonApp.dir/build.make MaineCoonApp/CMakeFiles/MaineCoonApp.dir/src/MaincoonApp.cpp.i
 .PHONY : src/MaincoonApp.cpp.i
 
 src/MaincoonApp.s: src/MaincoonApp.cpp.s
@@ -210,7 +210,7 @@ src/MaincoonApp.s: src/MaincoonApp.cpp.s
 
 # target to generate assembly for a file
 src/MaincoonApp.cpp.s:
-	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/TabbySandbox.dir/build.make MaineCoonApp/CMakeFiles/TabbySandbox.dir/src/MaincoonApp.cpp.s
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build && $(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/MaineCoonApp.dir/build.make MaineCoonApp/CMakeFiles/MaineCoonApp.dir/src/MaincoonApp.cpp.s
 .PHONY : src/MaincoonApp.cpp.s
 
 # Help Target
@@ -225,8 +225,8 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... copy_assets_sandbox"
-	@echo "... TabbySandbox"
+	@echo "... copy_assets_app"
+	@echo "... MaineCoonApp"
 	@echo "... src/MaincoonApp.o"
 	@echo "... src/MaincoonApp.i"
 	@echo "... src/MaincoonApp.s"

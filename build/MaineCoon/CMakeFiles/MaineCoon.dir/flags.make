@@ -12,7 +12,11 @@ CXX_FLAGS = -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineToo
 
 # PCH options: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx.pch_OPTIONS = -Winvalid-pch;-Xclang;-emit-pch;-Xclang;-include;-Xclang;/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx;-x;c++-header
 
-# PCH options: MaineCoon/CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.o_OPTIONS = -Winvalid-pch;;-Xarch_arm64;-include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
+# PCH options: MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.o_OPTIONS = -Winvalid-pch;;-Xarch_arm64;-include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
+
+# PCH options: MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.o_OPTIONS = -Winvalid-pch;;-Xarch_arm64;-include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
+
+# PCH options: MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.o_OPTIONS = -Winvalid-pch;;-Xarch_arm64;-include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
 
 # PCH options: MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui.cpp.o_OPTIONS = -Winvalid-pch;;-Xarch_arm64;-include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
 
@@ -23,4 +27,8 @@ CXX_FLAGS = -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineToo
 # PCH options: MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_tables.cpp.o_OPTIONS = -Winvalid-pch;;-Xarch_arm64;-include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
 
 # PCH options: MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_demo.cpp.o_OPTIONS = -Winvalid-pch;;-Xarch_arm64;-include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
+
+# PCH options: MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.o_OPTIONS = -Winvalid-pch;;-Xarch_arm64;-include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
+
+# PCH options: MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.o_OPTIONS = -Winvalid-pch;;-Xarch_arm64;-include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
 

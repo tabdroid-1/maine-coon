@@ -308,6 +308,15 @@ GLFW_LIBRARY_TYPE:STRING=
 GLFW_SOURCE_DIR:STATIC=/Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/vendor/GLFW
 
 //Value Computed by CMake
+MaineCoonApp_BINARY_DIR:STATIC=/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoonApp
+
+//Value Computed by CMake
+MaineCoonApp_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+MaineCoonApp_SOURCE_DIR:STATIC=/Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoonApp
+
+//Value Computed by CMake
 MaineCoon_BINARY_DIR:STATIC=/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon
 
 //Value Computed by CMake
@@ -315,6 +324,15 @@ MaineCoon_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 MaineCoon_SOURCE_DIR:STATIC=/Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon
+
+//Include for OpenGL on OS X
+OPENGL_INCLUDE_DIR:PATH=/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/OpenGL.framework
+
+//OpenGL library for OS X
+OPENGL_gl_LIBRARY:FILEPATH=/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/OpenGL.framework
+
+//GLU library for OS X (usually same as OpenGL library)
+OPENGL_glu_LIBRARY:FILEPATH=/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/OpenGL.framework
 
 //Arguments to supply to pkg-config
 PKG_CONFIG_ARGN:STRING=
@@ -330,15 +348,6 @@ TabbyGameEngine_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 TabbyGameEngine_SOURCE_DIR:STATIC=/Users/tabby/Desktop/projects/C++/MaineCoon
-
-//Value Computed by CMake
-TabbySandbox_BINARY_DIR:STATIC=/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoonApp
-
-//Value Computed by CMake
-TabbySandbox_IS_TOP_LEVEL:STATIC=OFF
-
-//Value Computed by CMake
-TabbySandbox_SOURCE_DIR:STATIC=/Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoonApp
 
 //Value Computed by CMake
 glm_BINARY_DIR:STATIC=/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/vendor/glm
@@ -536,6 +545,8 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: DOXYGEN_EXECUTABLE
 DOXYGEN_EXECUTABLE-ADVANCED:INTERNAL=1
+//Details about finding OpenGL
+FIND_PACKAGE_MESSAGE_DETAILS_OpenGL:INTERNAL=[/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/OpenGL.framework][/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/OpenGL.framework][c ][v()]
 //Details about finding PkgConfig
 FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/opt/homebrew/bin/pkg-config][v0.29.2()]
 //Details about finding Threads
@@ -544,6 +555,12 @@ FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 GLFW_PKG_CONFIG_LIBS_PRIVATE:INTERNAL= -framework Cocoa -framework IOKit -framework CoreFoundation
 //GLFW pkg-config Requires.private
 GLFW_PKG_CONFIG_REQUIRES_PRIVATE:INTERNAL=
+//ADVANCED property for variable: OPENGL_INCLUDE_DIR
+OPENGL_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPENGL_gl_LIBRARY
+OPENGL_gl_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPENGL_glu_LIBRARY
+OPENGL_glu_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_ARGN
 PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE

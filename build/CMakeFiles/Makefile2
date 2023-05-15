@@ -181,7 +181,7 @@ MaineCoon/vendor/glm/glm/clean:
 # Directory level rules for directory MaineCoonApp
 
 # Recursive "all" directory target.
-MaineCoonApp/all: MaineCoonApp/CMakeFiles/TabbySandbox.dir/all
+MaineCoonApp/all: MaineCoonApp/CMakeFiles/MaineCoonApp.dir/all
 .PHONY : MaineCoonApp/all
 
 # Recursive "preinstall" directory target.
@@ -189,8 +189,8 @@ MaineCoonApp/preinstall:
 .PHONY : MaineCoonApp/preinstall
 
 # Recursive "clean" directory target.
-MaineCoonApp/clean: MaineCoonApp/CMakeFiles/TabbySandbox.dir/clean
-MaineCoonApp/clean: MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/clean
+MaineCoonApp/clean: MaineCoonApp/CMakeFiles/MaineCoonApp.dir/clean
+MaineCoonApp/clean: MaineCoonApp/CMakeFiles/copy_assets_app.dir/clean
 .PHONY : MaineCoonApp/clean
 
 #=============================================================================
@@ -201,12 +201,12 @@ MaineCoon/CMakeFiles/MaineCoon.dir/all: MaineCoon/vendor/GLFW/src/CMakeFiles/glf
 MaineCoon/CMakeFiles/MaineCoon.dir/all: MaineCoon/vendor/CMakeFiles/imgui.dir/all
 	$(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/depend
 	$(MAKE) $(MAKESILENT) -f MaineCoon/CMakeFiles/MaineCoon.dir/build.make MaineCoon/CMakeFiles/MaineCoon.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target MaineCoon"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Built target MaineCoon"
 .PHONY : MaineCoon/CMakeFiles/MaineCoon.dir/all
 
 # Build rule for subdir invocation for target.
 MaineCoon/CMakeFiles/MaineCoon.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles 35
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles 39
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MaineCoon/CMakeFiles/MaineCoon.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles 0
 .PHONY : MaineCoon/CMakeFiles/MaineCoon.dir/rule
@@ -253,7 +253,7 @@ MaineCoon/vendor/glm/CMakeFiles/uninstall.dir/clean:
 MaineCoon/vendor/GLFW/src/CMakeFiles/glfw.dir/all:
 	$(MAKE) $(MAKESILENT) -f MaineCoon/vendor/GLFW/src/CMakeFiles/glfw.dir/build.make MaineCoon/vendor/GLFW/src/CMakeFiles/glfw.dir/depend
 	$(MAKE) $(MAKESILENT) -f MaineCoon/vendor/GLFW/src/CMakeFiles/glfw.dir/build.make MaineCoon/vendor/GLFW/src/CMakeFiles/glfw.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32 "Built target glfw"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36 "Built target glfw"
 .PHONY : MaineCoon/vendor/GLFW/src/CMakeFiles/glfw.dir/all
 
 # Build rule for subdir invocation for target.
@@ -279,7 +279,7 @@ MaineCoon/vendor/GLFW/src/CMakeFiles/glfw.dir/clean:
 MaineCoon/vendor/GLFW/src/CMakeFiles/update_mappings.dir/all:
 	$(MAKE) $(MAKESILENT) -f MaineCoon/vendor/GLFW/src/CMakeFiles/update_mappings.dir/build.make MaineCoon/vendor/GLFW/src/CMakeFiles/update_mappings.dir/depend
 	$(MAKE) $(MAKESILENT) -f MaineCoon/vendor/GLFW/src/CMakeFiles/update_mappings.dir/build.make MaineCoon/vendor/GLFW/src/CMakeFiles/update_mappings.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=38 "Built target update_mappings"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=42 "Built target update_mappings"
 .PHONY : MaineCoon/vendor/GLFW/src/CMakeFiles/update_mappings.dir/all
 
 # Build rule for subdir invocation for target.
@@ -305,7 +305,7 @@ MaineCoon/vendor/GLFW/src/CMakeFiles/update_mappings.dir/clean:
 MaineCoon/vendor/CMakeFiles/imgui.dir/all:
 	$(MAKE) $(MAKESILENT) -f MaineCoon/vendor/CMakeFiles/imgui.dir/build.make MaineCoon/vendor/CMakeFiles/imgui.dir/depend
 	$(MAKE) $(MAKESILENT) -f MaineCoon/vendor/CMakeFiles/imgui.dir/build.make MaineCoon/vendor/CMakeFiles/imgui.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=33,34,35,36,37 "Built target imgui"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=37,38,39,40,41 "Built target imgui"
 .PHONY : MaineCoon/vendor/CMakeFiles/imgui.dir/all
 
 # Build rule for subdir invocation for target.
@@ -325,56 +325,59 @@ MaineCoon/vendor/CMakeFiles/imgui.dir/clean:
 .PHONY : MaineCoon/vendor/CMakeFiles/imgui.dir/clean
 
 #=============================================================================
-# Target rules for target MaineCoonApp/CMakeFiles/TabbySandbox.dir
+# Target rules for target MaineCoonApp/CMakeFiles/MaineCoonApp.dir
 
 # All Build rule for target.
-MaineCoonApp/CMakeFiles/TabbySandbox.dir/all: MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/all
-	$(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/TabbySandbox.dir/build.make MaineCoonApp/CMakeFiles/TabbySandbox.dir/depend
-	$(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/TabbySandbox.dir/build.make MaineCoonApp/CMakeFiles/TabbySandbox.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=9,10 "Built target TabbySandbox"
-.PHONY : MaineCoonApp/CMakeFiles/TabbySandbox.dir/all
+MaineCoonApp/CMakeFiles/MaineCoonApp.dir/all: MaineCoon/vendor/GLFW/src/CMakeFiles/glfw.dir/all
+MaineCoonApp/CMakeFiles/MaineCoonApp.dir/all: MaineCoon/vendor/CMakeFiles/imgui.dir/all
+MaineCoonApp/CMakeFiles/MaineCoonApp.dir/all: MaineCoonApp/CMakeFiles/copy_assets_app.dir/all
+MaineCoonApp/CMakeFiles/MaineCoonApp.dir/all: MaineCoon/CMakeFiles/MaineCoon.dir/all
+	$(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/MaineCoonApp.dir/build.make MaineCoonApp/CMakeFiles/MaineCoonApp.dir/depend
+	$(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/MaineCoonApp.dir/build.make MaineCoonApp/CMakeFiles/MaineCoonApp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=13,14 "Built target MaineCoonApp"
+.PHONY : MaineCoonApp/CMakeFiles/MaineCoonApp.dir/all
 
 # Build rule for subdir invocation for target.
-MaineCoonApp/CMakeFiles/TabbySandbox.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MaineCoonApp/CMakeFiles/TabbySandbox.dir/all
+MaineCoonApp/CMakeFiles/MaineCoonApp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles 41
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MaineCoonApp/CMakeFiles/MaineCoonApp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles 0
-.PHONY : MaineCoonApp/CMakeFiles/TabbySandbox.dir/rule
+.PHONY : MaineCoonApp/CMakeFiles/MaineCoonApp.dir/rule
 
 # Convenience name for target.
-TabbySandbox: MaineCoonApp/CMakeFiles/TabbySandbox.dir/rule
-.PHONY : TabbySandbox
+MaineCoonApp: MaineCoonApp/CMakeFiles/MaineCoonApp.dir/rule
+.PHONY : MaineCoonApp
 
 # clean rule for target.
-MaineCoonApp/CMakeFiles/TabbySandbox.dir/clean:
-	$(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/TabbySandbox.dir/build.make MaineCoonApp/CMakeFiles/TabbySandbox.dir/clean
-.PHONY : MaineCoonApp/CMakeFiles/TabbySandbox.dir/clean
+MaineCoonApp/CMakeFiles/MaineCoonApp.dir/clean:
+	$(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/MaineCoonApp.dir/build.make MaineCoonApp/CMakeFiles/MaineCoonApp.dir/clean
+.PHONY : MaineCoonApp/CMakeFiles/MaineCoonApp.dir/clean
 
 #=============================================================================
-# Target rules for target MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir
+# Target rules for target MaineCoonApp/CMakeFiles/copy_assets_app.dir
 
 # All Build rule for target.
-MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/all:
-	$(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/build.make MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/depend
-	$(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/build.make MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num= "Built target copy_assets_sandbox"
-.PHONY : MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/all
+MaineCoonApp/CMakeFiles/copy_assets_app.dir/all:
+	$(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/copy_assets_app.dir/build.make MaineCoonApp/CMakeFiles/copy_assets_app.dir/depend
+	$(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/copy_assets_app.dir/build.make MaineCoonApp/CMakeFiles/copy_assets_app.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num= "Built target copy_assets_app"
+.PHONY : MaineCoonApp/CMakeFiles/copy_assets_app.dir/all
 
 # Build rule for subdir invocation for target.
-MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/rule: cmake_check_build_system
+MaineCoonApp/CMakeFiles/copy_assets_app.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles 0
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MaineCoonApp/CMakeFiles/copy_assets_app.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles 0
-.PHONY : MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/rule
+.PHONY : MaineCoonApp/CMakeFiles/copy_assets_app.dir/rule
 
 # Convenience name for target.
-copy_assets_sandbox: MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/rule
-.PHONY : copy_assets_sandbox
+copy_assets_app: MaineCoonApp/CMakeFiles/copy_assets_app.dir/rule
+.PHONY : copy_assets_app
 
 # clean rule for target.
-MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/clean:
-	$(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/build.make MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/clean
-.PHONY : MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir/clean
+MaineCoonApp/CMakeFiles/copy_assets_app.dir/clean:
+	$(MAKE) $(MAKESILENT) -f MaineCoonApp/CMakeFiles/copy_assets_app.dir/build.make MaineCoonApp/CMakeFiles/copy_assets_app.dir/clean
+.PHONY : MaineCoonApp/CMakeFiles/copy_assets_app.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

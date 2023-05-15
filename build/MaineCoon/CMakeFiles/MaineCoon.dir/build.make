@@ -84,28 +84,60 @@ MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx.s"
 	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGSarm64) -Winvalid-pch -Xclang -emit-pch -Xclang -include -Xclang /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -x c++-header -S /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx.cxx -o CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx.s
 
-MaineCoon/CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/flags.make
-MaineCoon/CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.o: /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/src/Core/Application.cpp
-MaineCoon/CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
-MaineCoon/CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx.pch
-MaineCoon/CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object MaineCoon/CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.o"
-	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -MD -MT MaineCoon/CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.o -MF CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.o.d -o CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.o -c /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/src/Core/Application.cpp
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/flags.make
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.o: /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/src/MaineCoon/Core/Application.cpp
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx.pch
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.o"
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -MD -MT MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.o -MF CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.o.d -o CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.o -c /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/src/MaineCoon/Core/Application.cpp
 
-MaineCoon/CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.i"
-	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -E /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/src/Core/Application.cpp > CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.i
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.i"
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -E /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/src/MaineCoon/Core/Application.cpp > CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.i
 
-MaineCoon/CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.s"
-	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -S /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/src/Core/Application.cpp -o CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.s
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.s"
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -S /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/src/MaineCoon/Core/Application.cpp -o CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.s
+
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/flags.make
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.o: /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/src/MaineCoon/Graphics/Image.cpp
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx.pch
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.o"
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -MD -MT MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.o -MF CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.o.d -o CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.o -c /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/src/MaineCoon/Graphics/Image.cpp
+
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.i"
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -E /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/src/MaineCoon/Graphics/Image.cpp > CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.i
+
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.s"
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -S /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/src/MaineCoon/Graphics/Image.cpp -o CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.s
+
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/flags.make
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.o: /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/src/MaineCoon/Input/Input.cpp
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx.pch
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.o"
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -MD -MT MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.o -MF CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.o.d -o CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.o -c /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/src/MaineCoon/Input/Input.cpp
+
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.i"
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -E /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/src/MaineCoon/Input/Input.cpp > CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.i
+
+MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.s"
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -S /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/src/MaineCoon/Input/Input.cpp -o CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.s
 
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/flags.make
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui.cpp.o: /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/vendor/imgui/imgui.cpp
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx.pch
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui.cpp.o"
 	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -MD -MT MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui.cpp.o -MF CMakeFiles/MaineCoon.dir/vendor/imgui/imgui.cpp.o.d -o CMakeFiles/MaineCoon.dir/vendor/imgui/imgui.cpp.o -c /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/vendor/imgui/imgui.cpp
 
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui.cpp.i: cmake_force
@@ -121,7 +153,7 @@ MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_draw.cpp.o: /Users/tabby/D
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_draw.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_draw.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx.pch
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_draw.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_draw.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_draw.cpp.o"
 	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -MD -MT MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_draw.cpp.o -MF CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_draw.cpp.o.d -o CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_draw.cpp.o -c /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/vendor/imgui/imgui_draw.cpp
 
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_draw.cpp.i: cmake_force
@@ -137,7 +169,7 @@ MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_widgets.cpp.o: /Users/tabb
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_widgets.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_widgets.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx.pch
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_widgets.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_widgets.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_widgets.cpp.o"
 	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -MD -MT MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_widgets.cpp.o -MF CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_widgets.cpp.o.d -o CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_widgets.cpp.o -c /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/vendor/imgui/imgui_widgets.cpp
 
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_widgets.cpp.i: cmake_force
@@ -153,7 +185,7 @@ MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_tables.cpp.o: /Users/tabby
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_tables.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_tables.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx.pch
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_tables.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_tables.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_tables.cpp.o"
 	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -MD -MT MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_tables.cpp.o -MF CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_tables.cpp.o.d -o CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_tables.cpp.o -c /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/vendor/imgui/imgui_tables.cpp
 
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_tables.cpp.i: cmake_force
@@ -169,7 +201,7 @@ MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_demo.cpp.o: /Users/tabby/D
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_demo.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_demo.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx.pch
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_demo.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_demo.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_demo.cpp.o"
 	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -MD -MT MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_demo.cpp.o -MF CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_demo.cpp.o.d -o CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_demo.cpp.o -c /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/vendor/imgui/imgui_demo.cpp
 
 MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_demo.cpp.i: cmake_force
@@ -180,28 +212,68 @@ MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_demo.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_demo.cpp.s"
 	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -S /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/vendor/imgui/imgui_demo.cpp -o CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_demo.cpp.s
 
+MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/flags.make
+MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.o: /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/vendor/imgui/backends/imgui_impl_opengl3.cpp
+MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
+MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx.pch
+MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.o"
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -MD -MT MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.o -MF CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.o.d -o CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.o -c /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/vendor/imgui/backends/imgui_impl_opengl3.cpp
+
+MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.i"
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -E /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/vendor/imgui/backends/imgui_impl_opengl3.cpp > CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.i
+
+MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.s"
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -S /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/vendor/imgui/backends/imgui_impl_opengl3.cpp -o CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.s
+
+MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/flags.make
+MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.o: /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/vendor/imgui/backends/imgui_impl_glfw.cpp
+MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx
+MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx.pch
+MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.o: MaineCoon/CMakeFiles/MaineCoon.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.o"
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -MD -MT MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.o -MF CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.o.d -o CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.o -c /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/vendor/imgui/backends/imgui_impl_glfw.cpp
+
+MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.i"
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -E /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/vendor/imgui/backends/imgui_impl_glfw.cpp > CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.i
+
+MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.s"
+	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -Xarch_arm64 -include/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx -S /Users/tabby/Desktop/projects/C++/MaineCoon/MaineCoon/vendor/imgui/backends/imgui_impl_glfw.cpp -o CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.s
+
 # Object files for target MaineCoon
 MaineCoon_OBJECTS = \
-"CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.o" \
+"CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.o" \
+"CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.o" \
+"CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.o" \
 "CMakeFiles/MaineCoon.dir/vendor/imgui/imgui.cpp.o" \
 "CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_draw.cpp.o" \
 "CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_widgets.cpp.o" \
 "CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_tables.cpp.o" \
-"CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_demo.cpp.o"
+"CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_demo.cpp.o" \
+"CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.o" \
+"CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.o"
 
 # External object files for target MaineCoon
 MaineCoon_EXTERNAL_OBJECTS =
 
 MaineCoon/libMaineCoon.a: MaineCoon/CMakeFiles/MaineCoon.dir/cmake_pch_arm64.hxx.pch
-MaineCoon/libMaineCoon.a: MaineCoon/CMakeFiles/MaineCoon.dir/src/Core/Application.cpp.o
+MaineCoon/libMaineCoon.a: MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Core/Application.cpp.o
+MaineCoon/libMaineCoon.a: MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Graphics/Image.cpp.o
+MaineCoon/libMaineCoon.a: MaineCoon/CMakeFiles/MaineCoon.dir/src/MaineCoon/Input/Input.cpp.o
 MaineCoon/libMaineCoon.a: MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui.cpp.o
 MaineCoon/libMaineCoon.a: MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_draw.cpp.o
 MaineCoon/libMaineCoon.a: MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_widgets.cpp.o
 MaineCoon/libMaineCoon.a: MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_tables.cpp.o
 MaineCoon/libMaineCoon.a: MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/imgui_demo.cpp.o
+MaineCoon/libMaineCoon.a: MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_opengl3.cpp.o
+MaineCoon/libMaineCoon.a: MaineCoon/CMakeFiles/MaineCoon.dir/vendor/imgui/backends/imgui_impl_glfw.cpp.o
 MaineCoon/libMaineCoon.a: MaineCoon/CMakeFiles/MaineCoon.dir/build.make
 MaineCoon/libMaineCoon.a: MaineCoon/CMakeFiles/MaineCoon.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX static library libMaineCoon.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/tabby/Desktop/projects/C++/MaineCoon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX static library libMaineCoon.a"
 	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && $(CMAKE_COMMAND) -P CMakeFiles/MaineCoon.dir/cmake_clean_target.cmake
 	cd /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MaineCoon.dir/link.txt --verbose=$(VERBOSE)
 

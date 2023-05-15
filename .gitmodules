@@ -4,3 +4,11 @@
 [submodule "MaineCoon/vendor/glm"]
 	path = MaineCoon/vendor/glm
 	url = https://github.com/g-truc/glm.git
+# [submodule "MaineCoon/vendor/imgui"]
+# 	path = MaineCoon/vendor/imgui
+# 	url = https://github.com/ocornut/imgui.git
+#     branch = docking
+[submodule "MaineCoon/vendor/imgui"]
+	path = MaineCoon/vendor/imgui
+	url = https://github.com/ocornut/imgui.git
+    branch = docking

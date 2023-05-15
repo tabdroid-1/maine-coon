@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(TabbySandbox)
+project(MaineCoonApp)
 set(CMAKE_CXX_STANDARD 17)
 
 ###################################################################
@@ -10,8 +10,8 @@ set(PROJECT_SRC_DIR "${CMAKE_CURRENT_LIST_DIR}/src")
 set(PROJECT_ASSETS_DIR "${CMAKE_CURRENT_LIST_DIR}/assets")
 
 # Libraries
-set(TABBY_DIR "${CMAKE_SOURCE_DIR}/Tabby")
-set(TABBY_LIB_DIR "${CMAKE_BINARY_DIR}/Tabby")
+set(MAINECOON_DIR "${CMAKE_SOURCE_DIR}/MaineCoon")
+set(MAINECOON_LIB_DIR "${CMAKE_BINARY_DIR}/MaineCoon")
 
 ###################################################################
 # Target sources and create executable
@@ -21,20 +21,13 @@ file(GLOB_RECURSE PROJECT_SOURCES
         "${PROJECT_SRC_DIR}/*.cpp"
         )
 
-if (WIN32)
-    # Include glad w/ executable for linker
-    list(APPEND PROJECT_SOURCES
-            "${TABBY_DIR}/vendor/Glad/src/glad.c"
-            "${TABBY_DIR}/vendor/Glad/include/glad/glad.h"
-            )
-endif ()
 
 # Create executable
 add_executable(${PROJECT_NAME} "${PROJECT_SOURCES}")
 
 # Link libraries
 target_link_libraries(${PROJECT_NAME}
-        "Tabby"
+        "MaineCoon"
         )
 
 # Include directories
@@ -42,8 +35,8 @@ target_include_directories(${PROJECT_NAME} PUBLIC
         "${PROJECT_ASSETS_DIR}"
         "${PROJECT_SOURCE_DIR}"
 
-        "${TABBY_LIB_DIR}/src"
-        "${TABBY_LIB_DIR}/vendor"
+        "${MAINECOON_LIB_DIR}/src"
+        "${MAINECOON_LIB_DIR}/vendor"
         )
 
 ###################################################################
@@ -52,7 +45,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 if (WIN32)
     # Copy library dlls -------------------------------------------
     file(GLOB_RECURSE LIB_DLLS
-            "${TABBY_LIB_DIR}/*.dll"
+            "${MAINECOON_LIB_DIR}/*.dll"
             )
 
     foreach (dll ${LIB_DLLS})
@@ -62,10 +55,10 @@ if (WIN32)
     # -------------------------------------------------------------
 endif ()
 
-add_custom_target(copy_assets_sandbox
+add_custom_target(copy_assets_app
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${PROJECT_ASSETS_DIR} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/assets
         )
 
-add_dependencies(${PROJECT_NAME} copy_assets_sandbox)
+add_dependencies(${PROJECT_NAME} copy_assets_app)
 # -----------------------------------------------------------------

@@ -45,8 +45,8 @@
 /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/vendor/CMakeFiles/install.dir
 /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/vendor/CMakeFiles/install/local.dir
 /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoon/vendor/CMakeFiles/install/strip.dir
-/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoonApp/CMakeFiles/TabbySandbox.dir
-/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoonApp/CMakeFiles/copy_assets_sandbox.dir
+/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoonApp/CMakeFiles/MaineCoonApp.dir
+/Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoonApp/CMakeFiles/copy_assets_app.dir
 /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoonApp/CMakeFiles/edit_cache.dir
 /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoonApp/CMakeFiles/rebuild_cache.dir
 /Users/tabby/Desktop/projects/C++/MaineCoon/build/MaineCoonApp/CMakeFiles/list_install_components.dir
