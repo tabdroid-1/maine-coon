@@ -4,7 +4,7 @@ project(imgui)
 set(IMGUI_DIR "${CMAKE_CURRENT_SOURCE_DIR}/imgui")
 set(IMGUI_EXAMPLE_DIR "${IMGUI_DIR}/examples/example_glfw_opengl3")
 set(GLFW_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/glfw")
-set(GLFW_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/GLFW/include")
+set(GLFW_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/glfw/include")
 
 set(IMGUI_SOURCES
         "${IMGUI_DIR}/imgui_draw.cpp"

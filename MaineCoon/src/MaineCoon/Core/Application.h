@@ -5,7 +5,8 @@
 #include <MaineCoon/Core/Layer.h>
 
 #include <imgui/imgui.h>
-#include <glfw/glfw3.h>
+#include <GLFW/glfw3.h>
+
 
 struct GLFWwindow;
 
@@ -43,15 +44,12 @@ namespace MaineCoon {
 		float GetTime();
 		GLFWwindow* GetWindowHandle() const { return m_WindowHandle; }
 
-        // static Application& GetInstance() { return *s_Instance; }
-
 		static void SubmitResourceFree(std::function<void()>&& func);
 	private:
 		void Init();
 		void Shutdown();
 	private:
         ApplicationSpecification m_Specification;   
-        // static Application *s_Instance;
 		GLFWwindow* m_WindowHandle;
         
 		bool m_Running = false;

@@ -26,7 +26,7 @@ include_directories( ${OPENGL_INCLUDE_DIRS} )
 
 # Vendor/Libraries
 set(IMGUI "${PROJECT_VENDOR_DIR}/imgui")
-set(GLFW "${PROJECT_VENDOR_DIR}/GLFW")
+set(GLFW "${PROJECT_VENDOR_DIR}/glfw")
 set(GLM "${PROJECT_VENDOR_DIR}/glm")
 set(STB "${PROJECT_VENDOR_DIR}/stb_image")
 
