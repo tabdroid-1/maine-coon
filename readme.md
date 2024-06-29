@@ -1,5 +1,5 @@
 
-![MaineCoon](/resources/logo/Maine_Coon_Logo_Name_1024X256.png?raw=true "MaineCoon")
+![MaineCoon](/resources/logo/Maine_Coon_Logo_Name_1024x256.png?raw=true "MaineCoon")
 
 Ligth weight crossplatform application framework.
 
