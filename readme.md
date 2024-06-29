@@ -42,7 +42,7 @@ For building web install emscriptem from their git repo. Installing from package
        git clone https://github.com/tabdroid-1/MaineCoon.git && mkdir MaineCoon/build && cd MaineCoon/build
         ```
     2. ```shell
-        cmake .. && make
+       cmake .. && make
         ```
     
   - For Windows:  
