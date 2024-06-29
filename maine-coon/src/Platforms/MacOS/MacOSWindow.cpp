@@ -1,4 +1,4 @@
-#ifdef TB_PLATFORM_MACOS
+#ifdef MC_PLATFORM_MACOS
 #include <MaineCoon/Core/Input/KeyCodes.h>
 #include <MaineCoon/Renderer/Renderer.h>
 #include <MaineCoon/Renderer/RendererAPI.h>
@@ -22,36 +22,36 @@ static uint8_t s_SDLWindowCount = 0;
 
 MacOSWindow::MacOSWindow(const WindowProps& props)
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     Init(props);
 }
 
 MacOSWindow::~MacOSWindow()
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     Shutdown();
 }
 
 void MacOSWindow::Init(const WindowProps& props)
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     m_Data.Title = props.Title;
     m_Data.Width = props.Width;
     m_Data.Height = props.Height;
 
-    TB_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
+    MC_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
     if (s_SDLWindowCount == 0) {
-        TB_PROFILE_SCOPE_NAME("SDL Init");
+        MC_PROFILE_SCOPE_NAME("SDL Init");
         int success = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK);
-        TB_CORE_ASSERT(success, "Could not initialize GLFW!");
+        MC_CORE_ASSERT(success, "Could not initialize GLFW!");
     }
 
     {
-        TB_PROFILE_SCOPE_NAME("glfwCreateWindow");
+        MC_PROFILE_SCOPE_NAME("glfwCreateWindow");
         if (Renderer::GetAPI() == RendererAPI::API::OpenGL33) {
 
             SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
@@ -59,7 +59,7 @@ void MacOSWindow::Init(const WindowProps& props)
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG); // Always required on Mac
-#if defined(TB_DEBUG)
+#if defined(MC_DEBUG)
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG);
 #endif
         } else if (Renderer::GetAPI() == RendererAPI::API::OpenGLES3) {
@@ -69,7 +69,7 @@ void MacOSWindow::Init(const WindowProps& props)
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG); // Always required on Mac
-#if defined(TB_DEBUG)
+#if defined(MC_DEBUG)
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG);
 #endif
         }
@@ -93,7 +93,7 @@ void MacOSWindow::Init(const WindowProps& props)
 
 void MacOSWindow::Shutdown()
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     SDL_DestroyWindow(m_Window);
     --s_SDLWindowCount;
@@ -105,7 +105,7 @@ void MacOSWindow::Shutdown()
 
 void MacOSWindow::OnUpdate()
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
@@ -184,7 +184,7 @@ void MacOSWindow::OnUpdate()
 
 void MacOSWindow::SetVSync(bool enabled)
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     if (enabled)
         SDL_GL_SetSwapInterval(1);

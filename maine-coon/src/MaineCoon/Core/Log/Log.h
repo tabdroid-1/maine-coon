@@ -51,15 +51,15 @@ inline OStream& operator<<(OStream& os, glm::qua<T, Q> quaternion)
 }
 
 // Core log macros
-#define TB_CORE_TRACE(...) ::MaineCoon::Log::GetCoreLogger()->trace(__VA_ARGS__)
-#define TB_CORE_INFO(...) ::MaineCoon::Log::GetCoreLogger()->info(__VA_ARGS__)
-#define TB_CORE_WARN(...) ::MaineCoon::Log::GetCoreLogger()->warn(__VA_ARGS__)
-#define TB_CORE_ERROR(...) ::MaineCoon::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define TB_CORE_CRITICAL(...) ::MaineCoon::Log::GetCoreLogger()->critical(__VA_ARGS__)
+#define MC_CORE_TRACE(...) ::MaineCoon::Log::GetCoreLogger()->trace(__VA_ARGS__)
+#define MC_CORE_INFO(...) ::MaineCoon::Log::GetCoreLogger()->info(__VA_ARGS__)
+#define MC_CORE_WARN(...) ::MaineCoon::Log::GetCoreLogger()->warn(__VA_ARGS__)
+#define MC_CORE_ERROR(...) ::MaineCoon::Log::GetCoreLogger()->error(__VA_ARGS__)
+#define MC_CORE_CRITICAL(...) ::MaineCoon::Log::GetCoreLogger()->critical(__VA_ARGS__)
 
 // Client log macros
-#define TB_TRACE(...) ::MaineCoon::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define TB_INFO(...) ::MaineCoon::Log::GetClientLogger()->info(__VA_ARGS__)
-#define TB_WARN(...) ::MaineCoon::Log::GetClientLogger()->warn(__VA_ARGS__)
-#define TB_ERROR(...) ::MaineCoon::Log::GetClientLogger()->error(__VA_ARGS__)
-#define TB_CRITICAL(...) ::MaineCoon::Log::GetClientLogger()->critical(__VA_ARGS__)
+#define MC_TRACE(...) ::MaineCoon::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define MC_INFO(...) ::MaineCoon::Log::GetClientLogger()->info(__VA_ARGS__)
+#define MC_WARN(...) ::MaineCoon::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define MC_ERROR(...) ::MaineCoon::Log::GetClientLogger()->error(__VA_ARGS__)
+#define MC_CRITICAL(...) ::MaineCoon::Log::GetClientLogger()->critical(__VA_ARGS__)

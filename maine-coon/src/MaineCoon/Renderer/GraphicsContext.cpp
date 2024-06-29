@@ -11,7 +11,7 @@ Scope<GraphicsContext> GraphicsContext::Create(void* window)
 {
     switch (Renderer::GetAPI()) {
     case RendererAPI::API::None:
-        TB_CORE_ASSERT_TAGGED(false, "No renderer API selected.");
+        MC_CORE_ASSERT_TAGGED(false, "No renderer API selected.");
         return nullptr;
     case RendererAPI::API::OpenGL33:
         return CreateScope<OpenGL33Context>(static_cast<SDL_Window*>(window));
@@ -19,7 +19,7 @@ Scope<GraphicsContext> GraphicsContext::Create(void* window)
         return CreateScope<OpenGLES3Context>(static_cast<SDL_Window*>(window));
     }
 
-    TB_CORE_ASSERT_TAGGED(false, "Unknown RendererAPI!");
+    MC_CORE_ASSERT_TAGGED(false, "Unknown RendererAPI!");
     return nullptr;
 }
 

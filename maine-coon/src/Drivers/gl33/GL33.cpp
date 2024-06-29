@@ -1,6 +1,6 @@
 
 #include "Drivers/gl33/GL33.h"
-#if !defined(TB_PLATFORM_WEB) || !defined(TB_PLATFORM_ANDROID)
+#if !defined(MC_PLATFORM_WEB) || !defined(MC_PLATFORM_ANDROID)
 #include <glad/gl33.h>
 
 namespace MaineCoon {
@@ -10,7 +10,7 @@ GladGLContext* GL33::gl = nullptr;
 
 GL33::GL33()
 {
-    TB_CORE_ASSERT_TAGGED(!s_Instance, "GL33 context already exists!");
+    MC_CORE_ASSERT_TAGGED(!s_Instance, "GL33 context already exists!");
     s_Instance = this;
 }
 

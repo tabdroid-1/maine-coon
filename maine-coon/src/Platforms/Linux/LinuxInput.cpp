@@ -1,4 +1,4 @@
-#ifdef TB_PLATFORM_LINUX
+#ifdef MC_PLATFORM_LINUX
 
 #include "MaineCoon/Core/Input/Input.h"
 #include "mcpch.h"

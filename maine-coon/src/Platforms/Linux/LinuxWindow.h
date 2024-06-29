@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef TB_PLATFORM_LINUX
+#ifdef MC_PLATFORM_LINUX
 
 #include "MaineCoon/Core/Window.h"
 #include "MaineCoon/Renderer/GraphicsContext.h"

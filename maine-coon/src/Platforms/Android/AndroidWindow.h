@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef TB_PLATFORM_ANDROID
+#ifdef MC_PLATFORM_ANDROID
 
 #include "MaineCoon/Core/Window.h"
 #include "MaineCoon/Renderer/GraphicsContext.h"

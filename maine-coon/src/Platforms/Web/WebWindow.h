@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef TB_PLATFORM_WEB
+#ifdef MC_PLATFORM_WEB
 
 #include "MaineCoon/Core/Window.h"
 #include "MaineCoon/Renderer/GraphicsContext.h"

@@ -10,10 +10,10 @@ namespace MaineCoon {
 
 AssetManager::AssetManager()
 {
-    TB_CORE_ASSERT_TAGGED(!s_Instance, "AssetManager already Initialized!");
+    MC_CORE_ASSERT_TAGGED(!s_Instance, "AssetManager already Initialized!");
     s_Instance = this;
 
-    TB_CORE_INFO("Initialized asset manager");
+    MC_CORE_INFO("Initialized asset manager");
 }
 
 AssetManager::~AssetManager()
@@ -80,8 +80,8 @@ AssetHandle AssetManager::ImportImageSource(std::filesystem::path path, AssetHan
     {
 
         stbi_set_flip_vertically_on_load(false);
-        TB_PROFILE_SCOPE_NAME("stbi_load - AssetManager::ImportTexture");
-#if defined(TB_PLATFORM_ANDROID)
+        MC_PROFILE_SCOPE_NAME("stbi_load - AssetManager::ImportTexture");
+#if defined(MC_PLATFORM_ANDROID)
         std::vector<unsigned char> imageData;
 
         SDL_RWops* rw = SDL_RWFromFile(path.c_str(), "rb");
@@ -93,7 +93,7 @@ AssetHandle AssetManager::ImportImageSource(std::filesystem::path path, AssetHan
                 Sint64 bytesRead = SDL_RWread(rw, imageData.data(), 1, size);
                 if (bytesRead != size) {
                     // Handle read error
-                    TB_CORE_ERROR("Error reading file {0}", path);
+                    MC_CORE_ERROR("Error reading file {0}", path);
                     imageData.clear(); // Clear the imageData to indicate an error
                 }
             }
@@ -101,8 +101,8 @@ AssetHandle AssetManager::ImportImageSource(std::filesystem::path path, AssetHan
             SDL_RWclose(rw);
         } else {
             // Handle file open error
-            TB_CORE_ERROR("Could not open file {0}", path);
-            TB_CORE_INFO("Current working dir: {0}", std::filesystem::current_path());
+            MC_CORE_ERROR("Could not open file {0}", path);
+            MC_CORE_INFO("Current working dir: {0}", std::filesystem::current_path());
         }
 
         data.Data = stbi_load_from_memory(imageData.data(), static_cast<int>(imageData.size()), &width, &height, &channels, 4);
@@ -114,7 +114,7 @@ AssetHandle AssetManager::ImportImageSource(std::filesystem::path path, AssetHan
         channels = 4;
 
         if (data.Data == nullptr) {
-            TB_CORE_ERROR("TextureImporter::ImportTexture - Could not load texture from filepath: {}", path.string());
+            MC_CORE_ERROR("TextureImporter::ImportTexture - Could not load texture from filepath: {}", path.string());
         }
     }
 
@@ -166,8 +166,8 @@ AssetHandle AssetManager::ImportFontSource(std::filesystem::path path, AssetHand
     //
     //     {
     //
-    //         TB_PROFILE_SCOPE_NAME("FT_New_Face - AssetManager::ImportTexture");
-    // #if defined(TB_PLATFORM_ANDROID)
+    //         MC_PROFILE_SCOPE_NAME("FT_New_Face - AssetManager::ImportTexture");
+    // #if defined(MC_PLATFORM_ANDROID)
     //         std::vector<unsigned char> fontData;
     //
     //         SDL_RWops* rw = SDL_RWFromFile(path.c_str(), "rb");
@@ -179,7 +179,7 @@ AssetHandle AssetManager::ImportFontSource(std::filesystem::path path, AssetHand
     //                 Sint64 bytesRead = SDL_RWread(rw, fontData.data(), 1, size);
     //                 if (bytesRead != size) {
     //                     // Handle read error
-    //                     TB_CORE_ERROR("Error reading file {0}", path);
+    //                     MC_CORE_ERROR("Error reading file {0}", path);
     //                     fontData.clear(); // Clear the imageData to indicate an error
     //                 }
     //             }
@@ -187,8 +187,8 @@ AssetHandle AssetManager::ImportFontSource(std::filesystem::path path, AssetHand
     //             SDL_RWclose(rw);
     //         } else {
     //             // Handle file open error
-    //             TB_CORE_ERROR("Could not open file {0}", path);
-    //             TB_CORE_INFO("Current working dir: {0}", std::filesystem::current_path());
+    //             MC_CORE_ERROR("Could not open file {0}", path);
+    //             MC_CORE_INFO("Current working dir: {0}", std::filesystem::current_path());
     //         }
     //
     //         FT_New_Memory_Face(m_FTLibrary, fontData.data(), static_cast<int>(fontData.size()), 0, data.As<FT_Face>());
@@ -197,7 +197,7 @@ AssetHandle AssetManager::ImportFontSource(std::filesystem::path path, AssetHand
     // #endif
     //
     //         if (data.Data == nullptr) {
-    //             TB_CORE_ERROR("TextureImporter::ImportTexture - Could not load texture from filepath: {}", path.string());
+    //             MC_CORE_ERROR("TextureImporter::ImportTexture - Could not load texture from filepath: {}", path.string());
     //         }
     //     }
     //

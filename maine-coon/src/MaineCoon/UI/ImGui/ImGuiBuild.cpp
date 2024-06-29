@@ -1,7 +1,7 @@
 #include "mcpch.h"
 
 #include <misc/cpp/imgui_stdlib.cpp>
-#if defined(TB_PLATFORM_ANDROID)
+#if defined(MC_PLATFORM_ANDROID)
 #define IMGUI_IMPL_OPENGL_ES3
 #endif
 #define IMGUI_IMPL_OPENGL_LOADER_GLAD_2

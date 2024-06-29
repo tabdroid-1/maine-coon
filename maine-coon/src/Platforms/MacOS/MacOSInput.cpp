@@ -1,4 +1,4 @@
-#ifdef TB_PLATFORM_MACOS
+#ifdef MC_PLATFORM_MACOS
 
 #include "MaineCoon/Core/Input/Input.h"
 #include "tbpch.h"

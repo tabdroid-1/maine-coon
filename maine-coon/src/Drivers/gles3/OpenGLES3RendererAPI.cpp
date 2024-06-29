@@ -16,20 +16,20 @@ namespace MaineCoon {
 //     const void* userParam)
 // {
 //     switch (severity) {
-//         // case GL_DEBUG_SEVERITY_HIGH:         TB_CORE_CRITICAL(message); return;
-//         // case GL_DEBUG_SEVERITY_MEDIUM:       TB_CORE_ERROR(message); return;
-//         // case GL_DEBUG_SEVERITY_LOW:          TB_CORE_WARN(message); return;
-//         // case GL_DEBUG_SEVERITY_NOTIFICATION: TB_CORE_TRACE(message); return;
+//         // case GL_DEBUG_SEVERITY_HIGH:         MC_CORE_CRITICAL(message); return;
+//         // case GL_DEBUG_SEVERITY_MEDIUM:       MC_CORE_ERROR(message); return;
+//         // case GL_DEBUG_SEVERITY_LOW:          MC_CORE_WARN(message); return;
+//         // case GL_DEBUG_SEVERITY_NOTIFICATION: MC_CORE_TRACE(message); return;
 //     }
 //
-//     TB_CORE_ASSERT(false, "Unknown severity level!");
+//     MC_CORE_ASSERT(false, "Unknown severity level!");
 // }
 
 void OpenGLES3RendererAPI::Init()
 {
-    // TB_PROFILE_FUNCTION();
+    // MC_PROFILE_FUNCTION();
 
-#ifdef TB_DEBUG
+#ifdef MC_DEBUG
     // glEnable(GL_DEBUG_OUTPUT);
     // glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
     // glDebugMessageCallback(OpenGLMessageCallback, nullptr);

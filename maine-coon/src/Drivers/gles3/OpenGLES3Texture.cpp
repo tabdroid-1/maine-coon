@@ -20,7 +20,7 @@ namespace Utils {
             return GL_RGBA;
         }
 
-        TB_CORE_ASSERT(false);
+        MC_CORE_ASSERT(false);
         return 0;
     }
 
@@ -33,7 +33,7 @@ namespace Utils {
             return GL_RGBA8;
         }
 
-        TB_CORE_ASSERT(false);
+        MC_CORE_ASSERT(false);
         return 0;
     }
 }
@@ -44,7 +44,7 @@ OpenGLES3Texture::OpenGLES3Texture(const TextureSpecification& specification, As
     , m_Width(m_Specification.Width)
     , m_Height(m_Specification.Height)
 {
-    // TB_PROFILE_FUNCTION();
+    // MC_PROFILE_FUNCTION();
 
     Handle = handle;
     m_InternalFormat = Utils::MaineCoonImageFormatToGLInternalFormat(m_Specification.Format);
@@ -83,10 +83,10 @@ OpenGLES3Texture::~OpenGLES3Texture()
 
 void OpenGLES3Texture::SetData(Buffer data)
 {
-    // TB_PROFILE_FUNCTION();
+    // MC_PROFILE_FUNCTION();
 
     uint32_t bpp = m_DataFormat == GL_RGBA ? 4 : 3;
-    TB_CORE_ASSERT_TAGGED(data.Size == m_Width * m_Height * bpp, "Data must be the entire texture!");
+    MC_CORE_ASSERT_TAGGED(data.Size == m_Width * m_Height * bpp, "Data must be the entire texture!");
 
     GLES3::GL()->BindTexture(GL_TEXTURE_2D, m_RendererID);
     GLES3::GL()->TexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, m_Width, m_Height, m_DataFormat, GL_UNSIGNED_BYTE, data.Data);
@@ -94,7 +94,7 @@ void OpenGLES3Texture::SetData(Buffer data)
 
 void OpenGLES3Texture::SetSubData(void* data, uint32_t width, uint32_t height)
 {
-    // TB_PROFILE_FUNCTION();
+    // MC_PROFILE_FUNCTION();
 
     GLES3::GL()->BindTexture(GL_TEXTURE_2D, m_RendererID);
     GLES3::GL()->TexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, m_DataFormat, GL_UNSIGNED_BYTE, data);
@@ -102,7 +102,7 @@ void OpenGLES3Texture::SetSubData(void* data, uint32_t width, uint32_t height)
 
 void OpenGLES3Texture::Bind(uint32_t slot) const
 {
-    // TB_PROFILE_FUNCTION();
+    // MC_PROFILE_FUNCTION();
 
     GLES3::GL()->ActiveTexture(GL_TEXTURE0 + slot);
     GLES3::GL()->BindTexture(GL_TEXTURE_2D, m_RendererID);
@@ -110,7 +110,7 @@ void OpenGLES3Texture::Bind(uint32_t slot) const
 
 void OpenGLES3Texture::Destroy()
 {
-    TB_PROFILE_SCOPE_NAME("(Textures) Delete");
+    MC_PROFILE_SCOPE_NAME("(Textures) Delete");
 
     GLES3::GL()->DeleteTextures(1, &m_RendererID);
 }

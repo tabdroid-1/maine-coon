@@ -1,4 +1,4 @@
-#ifdef TB_PLATFORM_MACOS
+#ifdef MC_PLATFORM_MACOS
 
 #include "MaineCoon/Utils/PlatformUtils.h"
 

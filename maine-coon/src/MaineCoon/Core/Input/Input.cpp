@@ -39,7 +39,7 @@ Input::Input()
             tempCont.name += '\0';
             gamepads[i] = tempCont;
         } else
-            TB_CORE_WARN("Unable to open game controller [ERROR: {0}]", SDL_GetError());
+            MC_CORE_WARN("Unable to open game controller [ERROR: {0}]", SDL_GetError());
     }
 }
 
@@ -69,7 +69,7 @@ void Input::RefreshGamepads()
             tempCont.name += '\0';
             s_Instance->gamepads[i] = tempCont;
         } else
-            TB_CORE_WARN("Unable to open game controller [ERROR: {0}]", SDL_GetError());
+            MC_CORE_WARN("Unable to open game controller [ERROR: {0}]", SDL_GetError());
     }
 }
 

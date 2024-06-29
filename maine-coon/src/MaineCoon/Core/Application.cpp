@@ -13,16 +13,16 @@ Application* Application::s_Instance = nullptr;
 Application::Application(const ApplicationSpecification& specification)
     : m_Specification(specification)
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
-    TB_CORE_ASSERT_TAGGED(!s_Instance, "Application already exists!");
+    MC_CORE_ASSERT_TAGGED(!s_Instance, "Application already exists!");
     s_Instance = this;
 
     if (!m_Specification.WorkingDirectory.empty())
         std::filesystem::current_path(m_Specification.WorkingDirectory);
 
     m_Window = Window::Create(WindowProps(m_Specification.Name));
-    m_Window->SetEventCallback(TB_BIND_EVENT_FN(Application::OnEvent));
+    m_Window->SetEventCallback(MC_BIND_EVENT_FN(Application::OnEvent));
 
     AssetManager::Init();
     Audio::Engine::Init();
@@ -35,7 +35,7 @@ Application::Application(const ApplicationSpecification& specification)
 
 Application::~Application()
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
     Audio::Engine::Shutdown();
     Renderer::Shutdown();
 
@@ -45,7 +45,7 @@ Application::~Application()
 
 void Application::PushLayer(Layer* layer)
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     m_LayerStack.PushLayer(layer);
     layer->OnAttach();
@@ -53,7 +53,7 @@ void Application::PushLayer(Layer* layer)
 
 void Application::PushOverlay(Layer* layer)
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     m_LayerStack.PushOverlay(layer);
     layer->OnAttach();
@@ -73,11 +73,11 @@ void Application::SubmitToMainThread(const std::function<void()>& function)
 
 void Application::OnEvent(Event& e)
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     EventDispatcher dispatcher(e);
-    dispatcher.Dispatch<WindowCloseEvent>(TB_BIND_EVENT_FN(Application::OnWindowClose));
-    dispatcher.Dispatch<WindowResizeEvent>(TB_BIND_EVENT_FN(Application::OnWindowResize));
+    dispatcher.Dispatch<WindowCloseEvent>(MC_BIND_EVENT_FN(Application::OnWindowClose));
+    dispatcher.Dispatch<WindowResizeEvent>(MC_BIND_EVENT_FN(Application::OnWindowResize));
 
     for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it) {
         if (e.Handled)
@@ -90,7 +90,7 @@ void Application::Run()
 {
 
     while (m_Running) {
-        TB_PROFILE_FRAME("Application");
+        MC_PROFILE_FRAME("Application");
 
         double time = Time::GetTime();
         Time::SetDeltaTime(time - m_LastFrameTime);
@@ -102,7 +102,7 @@ void Application::Run()
             // and that breaks the phyiscs and some other stuff.
             // this happens because m_LastFrameTime is 0 in first frame.
             {
-                TB_PROFILE_SCOPE_NAME("LayerStack OnUpdate");
+                MC_PROFILE_SCOPE_NAME("LayerStack OnUpdate");
 
                 // TODO: Remove TimeStep
                 for (Layer* layer : m_LayerStack)
@@ -159,7 +159,7 @@ void Application::Run()
                 }
 
                 {
-                    TB_PROFILE_SCOPE_NAME("LayerStack OnImGuiRender");
+                    MC_PROFILE_SCOPE_NAME("LayerStack OnImGuiRender");
 
                     for (Layer* layer : m_LayerStack)
                         layer->OnImGuiRender();
@@ -192,7 +192,7 @@ bool Application::OnWindowClose(WindowCloseEvent& e)
 
 bool Application::OnWindowResize(WindowResizeEvent& e)
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     if (e.GetWidth() == 0 || e.GetHeight() == 0) {
         m_Minimized = true;

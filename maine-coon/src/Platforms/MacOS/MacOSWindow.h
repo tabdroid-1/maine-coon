@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef TB_PLATFORM_MACOS
+#ifdef MC_PLATFORM_MACOS
 
 #include "MaineCoon/Core/Window.h"
 #include "MaineCoon/Renderer/GraphicsContext.h"

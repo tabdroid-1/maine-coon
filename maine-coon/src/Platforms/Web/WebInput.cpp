@@ -1,4 +1,4 @@
-#ifdef TB_PLATFORM_WEB
+#ifdef MC_PLATFORM_WEB
 
 #include "MaineCoon/Input/Input.h"
 #include "tbpch.h"

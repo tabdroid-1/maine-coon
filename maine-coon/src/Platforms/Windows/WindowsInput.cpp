@@ -1,4 +1,4 @@
-#ifdef TB_PLATFORM_WINDOWS
+#ifdef MC_PLATFORM_WINDOWS
 
 #include "MaineCoon/Input/Input.h"
 #include "tbpch.h"

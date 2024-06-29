@@ -1,4 +1,4 @@
-#ifdef TB_PLATFORM_ANDROID
+#ifdef MC_PLATFORM_ANDROID
 
 #include "MaineCoon/Core/Application.h"
 #include "MaineCoon/Utils/PlatformUtils.h"

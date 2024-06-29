@@ -1,5 +1,5 @@
 #include "SDL_video.h"
-#ifdef TB_PLATFORM_ANDROID
+#ifdef MC_PLATFORM_ANDROID
 
 #include "Platforms/Android/AndroidWindow.h"
 #include "tbpch.h"
@@ -22,36 +22,36 @@ static uint8_t s_SDLWindowCount = 0;
 
 AndroidWindow::AndroidWindow(const WindowProps& props)
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     Init(props);
 }
 
 AndroidWindow::~AndroidWindow()
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     Shutdown();
 }
 
 void AndroidWindow::Init(const WindowProps& props)
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     m_Data.Title = props.Title;
     m_Data.Width = props.Width;
     m_Data.Height = props.Height;
 
-    TB_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
+    MC_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
     SDL_LogSetAllPriority(SDL_LOG_PRIORITY_VERBOSE);
     if (s_SDLWindowCount == 0) {
-        TB_PROFILE_SCOPE_NAME("SDL Init");
+        MC_PROFILE_SCOPE_NAME("SDL Init");
         int success = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK);
-        TB_CORE_ASSERT(success, "Could not initialize GLFW!");
+        MC_CORE_ASSERT(success, "Could not initialize GLFW!");
     }
 
     {
-        TB_PROFILE_SCOPE_NAME("SDLCreateWindow");
+        MC_PROFILE_SCOPE_NAME("SDLCreateWindow");
         if (Renderer::GetAPI() == RendererAPI::API::OpenGL33) {
 
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
@@ -60,7 +60,7 @@ void AndroidWindow::Init(const WindowProps& props)
             SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
             SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
             SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
-#if defined(TB_DEBUG)
+#if defined(MC_DEBUG)
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG);
 #endif
         } else if (Renderer::GetAPI() == RendererAPI::API::OpenGLES3) {
@@ -68,7 +68,7 @@ void AndroidWindow::Init(const WindowProps& props)
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
-#if defined(TB_DEBUG)
+#if defined(MC_DEBUG)
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG);
 #endif
         }
@@ -93,7 +93,7 @@ void AndroidWindow::Init(const WindowProps& props)
 
 void AndroidWindow::Shutdown()
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     SDL_DestroyWindow(m_Window);
     --s_SDLWindowCount;
@@ -105,7 +105,7 @@ void AndroidWindow::Shutdown()
 
 void AndroidWindow::OnUpdate()
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
@@ -183,7 +183,7 @@ void AndroidWindow::OnUpdate()
 
 void AndroidWindow::SetVSync(bool enabled)
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     if (enabled)
         SDL_GL_SetSwapInterval(1);

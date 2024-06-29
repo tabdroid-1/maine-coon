@@ -18,7 +18,7 @@ namespace Utils {
             return GL_RGB32UI;
         }
 
-        TB_CORE_ASSERT(false);
+        MC_CORE_ASSERT(false);
         return 0;
     }
 
@@ -33,7 +33,7 @@ namespace Utils {
             return GL_RGB32UI;
         }
 
-        TB_CORE_ASSERT(false);
+        MC_CORE_ASSERT(false);
         return 0;
     }
 
@@ -46,7 +46,7 @@ OpenGL33Texture::OpenGL33Texture(const TextureSpecification& specification, Asse
     , m_Height(m_Specification.Height)
 {
     Handle = handle;
-    TB_PROFILE_SCOPE_NAME("(Texture) Constructor");
+    MC_PROFILE_SCOPE_NAME("(Texture) Constructor");
 
     m_InternalFormat = Utils::MaineCoonImageFormatToGLInternalFormat(m_Specification.Format);
     m_DataFormat = Utils::MaineCoonImageFormatToGLDataFormat(m_Specification.Format);
@@ -85,10 +85,10 @@ OpenGL33Texture::~OpenGL33Texture()
 
 void OpenGL33Texture::SetData(Buffer data)
 {
-    TB_PROFILE_SCOPE_NAME("(Texture) Set data");
+    MC_PROFILE_SCOPE_NAME("(Texture) Set data");
 
     // uint32_t bpp = m_DataFormat == GL_RGBA ? 4 : 3;
-    // TB_CORE_ASSERT_TAGGED(data.Size == m_Width * m_Height * bpp, "Data must be the entire texture!");
+    // MC_CORE_ASSERT_TAGGED(data.Size == m_Width * m_Height * bpp, "Data must be the entire texture!");
 
     GL33::GL()->BindTexture(GL_TEXTURE_2D, m_RendererID);
     GL33::GL()->TexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, m_Width, m_Height, m_DataFormat, GL_UNSIGNED_BYTE, data.Data);
@@ -99,7 +99,7 @@ void OpenGL33Texture::SetData(Buffer data)
 
 void OpenGL33Texture::SetSubData(void* data, uint32_t width, uint32_t height)
 {
-    TB_PROFILE_SCOPE_NAME("(Texture) Set sub data");
+    MC_PROFILE_SCOPE_NAME("(Texture) Set sub data");
 
     GL33::GL()->BindTexture(GL_TEXTURE_2D, m_RendererID);
     GL33::GL()->TexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, m_DataFormat, GL_UNSIGNED_BYTE, data);
@@ -110,7 +110,7 @@ void OpenGL33Texture::SetSubData(void* data, uint32_t width, uint32_t height)
 
 void OpenGL33Texture::Bind(uint32_t slot) const
 {
-    TB_PROFILE_SCOPE_NAME("(Texture) bind");
+    MC_PROFILE_SCOPE_NAME("(Texture) bind");
 
     GL33::GL()->ActiveTexture(GL_TEXTURE0 + slot);
     GL33::GL()->BindTexture(GL_TEXTURE_2D, m_RendererID);
@@ -118,7 +118,7 @@ void OpenGL33Texture::Bind(uint32_t slot) const
 
 void OpenGL33Texture::Destroy()
 {
-    TB_PROFILE_SCOPE_NAME("(Textures) Delete");
+    MC_PROFILE_SCOPE_NAME("(Textures) Delete");
 
     GL33::GL()->DeleteTextures(1, &m_RendererID);
 }

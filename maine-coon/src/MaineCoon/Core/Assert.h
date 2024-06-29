@@ -3,46 +3,46 @@
 #include "MaineCoon/Core/Base.h"
 #include "MaineCoon/Core/Log/Log.h"
 
-#define TB_CORE_VERIFY(expression)                                           \
+#define MC_CORE_VERIFY(expression)                                           \
     do {                                                                     \
         if (!(expression)) {                                                 \
-            TB_CORE_ERROR("Assertion failed: {0}({1})", __FILE__, __LINE__); \
-            TB_DEBUGBREAK();                                                 \
+            MC_CORE_ERROR("Assertion failed: {0}({1})", __FILE__, __LINE__); \
+            MC_DEBUGBREAK();                                                 \
         }                                                                    \
     } while (false)
-#define TB_CORE_VERIFY_TAGGED(expression, ...)      \
+#define MC_CORE_VERIFY_TAGGED(expression, ...)      \
     do {                                            \
         if (!(expression)) {                        \
-            TB_CORE_ERROR(                          \
+            MC_CORE_ERROR(                          \
                 "Assertion failed: {0}({1}) | {2}", \
                 __FILE__,                           \
                 __LINE__,                           \
                 __VA_ARGS__);                       \
-            TB_DEBUGBREAK();                        \
+            MC_DEBUGBREAK();                        \
         }                                           \
     } while (false)
 
-#ifdef TB_ENABLE_ASSERTS
+#ifdef MC_ENABLE_ASSERTS
 
-#define TB_CORE_ASSERT(expression)                                           \
+#define MC_CORE_ASSERT(expression)                                           \
     do {                                                                     \
         if (!(expression)) {                                                 \
-            TB_CORE_ERROR("Assertion failed: {0}({1})", __FILE__, __LINE__); \
-            TB_DEBUGBREAK();                                                 \
+            MC_CORE_ERROR("Assertion failed: {0}({1})", __FILE__, __LINE__); \
+            MC_DEBUGBREAK();                                                 \
         }                                                                    \
     } while (false)
-#define TB_CORE_ASSERT_TAGGED(expression, ...)      \
+#define MC_CORE_ASSERT_TAGGED(expression, ...)      \
     do {                                            \
         if (!(expression)) {                        \
-            TB_CORE_ERROR(                          \
+            MC_CORE_ERROR(                          \
                 "Assertion failed: {0}({1}) | {2}", \
                 __FILE__,                           \
                 __LINE__,                           \
                 __VA_ARGS__);                       \
-            TB_DEBUGBREAK();                        \
+            MC_DEBUGBREAK();                        \
         }                                           \
     } while (false)
 #else
-#define TB_CORE_ASSERT(expression)
-#define TB_CORE_ASSERT_TAGGED(expression, ...)
+#define MC_CORE_ASSERT(expression)
+#define MC_CORE_ASSERT_TAGGED(expression, ...)
 #endif

@@ -3,7 +3,7 @@
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 
-#if defined(TB_PLATFORM_ANDROID)
+#if defined(MC_PLATFORM_ANDROID)
 #include "spdlog/sinks/android_sink.h"
 #endif
 
@@ -15,7 +15,7 @@ Shared<spdlog::logger> Log::s_ClientLogger;
 void Log::Init()
 {
     std::vector<spdlog::sink_ptr> logSinks;
-#if defined(TB_PLATFORM_ANDROID)
+#if defined(MC_PLATFORM_ANDROID)
     logSinks.emplace_back(std::make_shared<spdlog::sinks::android_sink_mt>());
     logSinks.emplace_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
 #else

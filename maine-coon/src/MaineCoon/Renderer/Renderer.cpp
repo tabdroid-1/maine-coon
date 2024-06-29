@@ -5,7 +5,7 @@ namespace MaineCoon {
 
 void Renderer::Init()
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     RenderCommand::Init();
 }

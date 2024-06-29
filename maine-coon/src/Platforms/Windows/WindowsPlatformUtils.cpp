@@ -1,4 +1,4 @@
-#ifdef TB_PLATFORM_WINDOWS
+#ifdef MC_PLATFORM_WINDOWS
 
 #include "MaineCoon/Core/Application.h"
 #include "MaineCoon/Utils/PlatformUtils.h"

@@ -1,4 +1,4 @@
-#ifdef TB_PLATFORM_LINUX
+#ifdef MC_PLATFORM_LINUX
 
 #include "Platforms/Linux/LinuxWindow.h"
 #include "mcpch.h"
@@ -20,43 +20,43 @@ static uint8_t s_SDLWindowCount = 0;
 
 LinuxWindow::LinuxWindow(const WindowProps& props)
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     Init(props);
 }
 
 LinuxWindow::~LinuxWindow()
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     Shutdown();
 }
 
 void LinuxWindow::Init(const WindowProps& props)
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     m_Data.Title = props.Title;
     m_Data.Width = props.Width;
     m_Data.Height = props.Height;
 
-    TB_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
+    MC_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
     if (s_SDLWindowCount == 0) {
-        TB_PROFILE_SCOPE_NAME("SDL Init");
+        MC_PROFILE_SCOPE_NAME("SDL Init");
         int success = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK);
-        TB_CORE_ASSERT_TAGGED(success + 1, "Could not initialize SDL2!");
+        MC_CORE_ASSERT_TAGGED(success + 1, "Could not initialize SDL2!");
     }
 
     {
-        TB_PROFILE_SCOPE_NAME("SDLCreateWindow");
+        MC_PROFILE_SCOPE_NAME("SDLCreateWindow");
         if (Renderer::GetAPI() == RendererAPI::API::OpenGL33) {
 
             SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-#if defined(TB_DEBUG)
+#if defined(MC_DEBUG)
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG);
 #endif
         } else if (Renderer::GetAPI() == RendererAPI::API::OpenGLES3) {
@@ -65,7 +65,7 @@ void LinuxWindow::Init(const WindowProps& props)
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
-#if defined(TB_DEBUG)
+#if defined(MC_DEBUG)
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG);
 #endif
         }
@@ -89,7 +89,7 @@ void LinuxWindow::Init(const WindowProps& props)
 
 void LinuxWindow::Shutdown()
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     SDL_DestroyWindow(m_Window);
     --s_SDLWindowCount;
@@ -101,7 +101,7 @@ void LinuxWindow::Shutdown()
 
 void LinuxWindow::OnUpdate()
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
@@ -179,7 +179,7 @@ void LinuxWindow::OnUpdate()
 
 void LinuxWindow::SetVSync(bool enabled)
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     if (enabled)
         SDL_GL_SetSwapInterval(1);

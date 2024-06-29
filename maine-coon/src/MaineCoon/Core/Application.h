@@ -20,7 +20,7 @@ struct ApplicationCommandLineArgs {
 
     const char* operator[](int index) const
     {
-        TB_CORE_ASSERT(index < Count);
+        MC_CORE_ASSERT(index < Count);
         return Args[index];
     }
 };

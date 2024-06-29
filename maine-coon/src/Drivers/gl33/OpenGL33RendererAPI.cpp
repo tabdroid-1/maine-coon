@@ -8,7 +8,7 @@ namespace MaineCoon {
 
 void OpenGL33RendererAPI::Init()
 {
-    TB_PROFILE_SCOPE();
+    MC_PROFILE_SCOPE();
 
     GL33::GL()->Enable(GL_BLEND);
     GL33::GL()->BlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
