@@ -62,12 +62,12 @@ For building web install emscriptem from their git repo. Installing from package
         ```
 
   2. ```shell
-         emcmake cmake .. && make
-         ```
+        emcmake cmake .. && make
+        ```
 
   3. ```shell
-         python3 -m http.server 8080
-         ```
+        python3 -m http.server 8080
+        ```
      
 Special Thanks
  --------------
