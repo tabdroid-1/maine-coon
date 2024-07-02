@@ -61,6 +61,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
         ${LIBSNDFILE}/include
         )
 
+
 include_directories(SYSTEM src)
 include_directories(${IMGUI})
 include_directories(${IMGUIZMO})
@@ -96,6 +97,9 @@ elseif (UNIX AND NOT APPLE AND NOT ANDROID AND NOT EMSCRIPTEN)
 
     find_package(OpenAL)
 
+    find_package(PkgConfig REQUIRED)
+    pkg_check_modules(GTK4 REQUIRED IMPORTED_TARGET gtk4)
+
     message(STATUS "Generating scripts for Linux")
     target_link_libraries(${PROJECT_NAME} PRIVATE 
         imgui
@@ -105,6 +109,7 @@ elseif (UNIX AND NOT APPLE AND NOT ANDROID AND NOT EMSCRIPTEN)
         tracy 
         OpenAL::OpenAL
         sndfile
+        PkgConfig::GTK4
         )
 elseif (APPLE)
     message(STATUS "Generating scripts for Mac")

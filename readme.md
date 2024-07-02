@@ -16,6 +16,7 @@ External Dependencies
   - stb_image
   - tracy profiler
   - OpenAL-Soft 
+  - gtk4 (just on linux)
 
 Supported Graphics Apis
 -----------------------

@@ -36,8 +36,8 @@ std::string FileDialogs::SaveFile(const char* filter)
         // Sets modal properties before window is shown
         // The window type specifically is a NSSavePanel
         NSSavePanel* panel = [NSSavePanel savePanel];
-        panel.title = @"Save Scene As...";
-        panel.nameFieldStringValue = @"Scene1.rc";
+        panel.title = @"Save As...";
+        panel.nameFieldStringValue = @"file";
         panel.showsHiddenFiles = YES;
         panel.canCreateDirectories = YES;
 

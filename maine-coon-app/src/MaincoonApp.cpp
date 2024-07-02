@@ -21,6 +21,13 @@ public:
                 MaineCoon::Audio::Engine::PauseMusicPlayer();
         }
 
+        if (ImGui::Button("File Dialog Open")) {
+            MC_INFO("{0}", MaineCoon::FileDialogs::OpenFile(".png"));
+        }
+        if (ImGui::Button("File Dialog Save")) {
+            MC_INFO("{0}", MaineCoon::FileDialogs::SaveFile(".png"));
+        }
+
         auto texture = MaineCoon::AssetManager::Get()->GetAsset<MaineCoon::Texture>(m_Texture);
         ImGui::Image((void*)texture->GetRendererID(), { (float)texture->GetWidth(), (float)texture->GetHeight() });
         ImGui::End();
