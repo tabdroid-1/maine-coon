@@ -37,7 +37,8 @@ int main(int argc, char** argv)
 }
 
 #elif defined(MC_PLATFORM_WINDOWS)
-int main(int argc, char** argv)
+
+int TabbyMain(int argc, char** argv)
 {
     MaineCoon::Log::Init();
 
@@ -46,7 +47,20 @@ int main(int argc, char** argv)
     app->Run();
 
     delete app;
+
+    return 0;
 }
+
+int main(int argc, char** argv)
+{
+    return TabbyMain(argc, argv);
+}
+
+// TODO:
+// int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
+// {
+//     return TabbyMain(__argc, __argv);
+// }
 
 #elif defined(MC_PLATFORM_MACOS)
 int main(int argc, char** argv)

@@ -1,4 +1,4 @@
-#include "Input.h"
+#include "MaineCoon/Core/Input/Input.h"
 #include "SDL.h"
 
 namespace MaineCoon {

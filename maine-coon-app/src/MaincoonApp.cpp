@@ -1,6 +1,6 @@
 #include <MaineCoon.h>
-#include <MaineCoon/Core/Application.h>
 #include <MaineCoon/Core/EntryPoint.h>
+#include <MaineCoon/Core/Application.h>
 #include <MaineCoon/Audio/AudioEngine.h>
 
 class ExampleLayer : public MaineCoon::Layer {
@@ -62,26 +62,12 @@ MaineCoon::Application* MaineCoon::CreateApplication(MaineCoon::ApplicationComma
 
     Application* app = new Sandbox(spec);
     app->SetMenubarCallback([app]() {
-        // if (ImGui::BeginMenu("File")) {
-        //     if (ImGui::MenuItem("Exit")) {
-        //         app->Close();
-        //     }
-        //     ImGui::EndMenu();
-        // }
+        if (ImGui::BeginMenu("File")) {
+            if (ImGui::MenuItem("Exit")) {
+                app->Close();
+            }
+            ImGui::EndMenu();
+        }
     });
     return app;
-    // MaineCoon::ApplicationSpecification spec;
-    // spec.Name = "MaineCoon Example";
-    //
-    // MaineCoon::Application* app = new MaineCoon::Application(spec);
-    //
-    // app->SetMenubarCallback([app]() {
-    //     if (ImGui::BeginMenu("File")) {
-    //         if (ImGui::MenuItem("Exit")) {
-    //             app->Close();
-    //         }
-    //         ImGui::EndMenu();
-    //     }
-    // });
-    // return app;
 }

@@ -1,6 +1,6 @@
 #ifdef MC_PLATFORM_LINUX
 
-#include "Platforms/Linux/LinuxWindow.h"
+#include "LinuxWindow.h"
 #include "mcpch.h"
 
 #include "MaineCoon/Core/Input/Input.h"

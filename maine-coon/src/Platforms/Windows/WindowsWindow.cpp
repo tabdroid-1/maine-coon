@@ -1,9 +1,9 @@
 #ifdef MC_PLATFORM_WINDOWS
 
-#include "Platforms/Windows/WindowsWindow.h"
+#include "WindowsWindow.h"
 #include "mcpch.h"
 
-#include "MaineCoon/Input/Input.h"
+#include "MaineCoon/Core/Input/Input.h"
 #include "backends/imgui_impl_sdl2.h"
 
 #include "MaineCoon/Core/Events/ApplicationEvent.h"
@@ -45,7 +45,7 @@ void WindowsWindow::Init(const WindowProps& props)
     if (s_SDLWindowCount == 0) {
         MC_PROFILE_SCOPE_NAME("SDL Init");
         int success = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK);
-        MC_CORE_ASSERT(success, "Could not initialize SDL!");
+        MC_CORE_ASSERT_TAGGED(success, "Could not initialize SDL!");
     }
 
     {

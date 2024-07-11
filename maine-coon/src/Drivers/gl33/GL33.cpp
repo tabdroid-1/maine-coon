@@ -1,5 +1,5 @@
 
-#include "Drivers/gl33/GL33.h"
+#include "GL33.h"
 #if !defined(MC_PLATFORM_WEB) || !defined(MC_PLATFORM_ANDROID)
 #include <glad/gl33.h>
 

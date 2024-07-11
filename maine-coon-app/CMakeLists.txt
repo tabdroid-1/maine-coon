@@ -88,17 +88,16 @@ endif (EMSCRIPTEN)
 ###################################################################
 if (WIN32)
     # Copy library dlls -------------------------------------------
-    file(GLOB_RECURSE LIB_DLLS
-            "${MAINECOON_LIB_DIR}/*.dll"
-            )
-
-    foreach (dll ${LIB_DLLS})
-        file(COPY ${dll}
-                DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
-    endforeach (dll)
+    # file(GLOB_RECURSE LIB_DLLS
+    #         "${MAINECOON_LIB_DIR}/*.dll"
+    #         )
+    #
+    # foreach (dll ${LIB_DLLS})
+    #     file(COPY ${dll}
+    #             DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+    # endforeach (dll)
     # -------------------------------------------------------------
 endif ()
-
 
 if (DEFINED EMSCRIPTEN)
     set(CMAKE_EXECUTABLE_SUFFIX ".html")

@@ -18,7 +18,6 @@ public:
     double GetMilliseconds() const { return m_Time * 1000.0f; }
 
 private:
-    // static Timestep* s_Instance;
     double m_Time;
 };
 

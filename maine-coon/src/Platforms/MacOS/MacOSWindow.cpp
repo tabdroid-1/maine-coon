@@ -3,15 +3,14 @@
 #include <MaineCoon/Renderer/Renderer.h>
 #include <MaineCoon/Renderer/RendererAPI.h>
 
-#include "Platforms/MacOS/MacOSWindow.h"
+#include "MacOSWindow.h"
 
-#include "MaineCoon/Input/Input.h"
+#include "MaineCoon/Core/Input/Input.h"
 
 #include "MaineCoon/Core/Events/ApplicationEvent.h"
 #include "MaineCoon/Core/Events/KeyEvent.h"
 #include "MaineCoon/Core/Events/MouseEvent.h"
 
-#include "Drivers/gl33/OpenGL33Context.h"
 #include "backends/imgui_impl_sdl2.h"
 
 #include <SDL.h>
@@ -47,7 +46,7 @@ void MacOSWindow::Init(const WindowProps& props)
     if (s_SDLWindowCount == 0) {
         MC_PROFILE_SCOPE_NAME("SDL Init");
         int success = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK);
-        MC_CORE_ASSERT(success, "Could not initialize GLFW!");
+        MC_CORE_ASSERT_TAGGED(success, "Could not initialize GLFW!");
     }
 
     {

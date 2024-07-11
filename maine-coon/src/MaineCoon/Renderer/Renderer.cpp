@@ -1,5 +1,4 @@
 #include "MaineCoon/Renderer/Renderer.h"
-#include "mcpch.h"
 
 namespace MaineCoon {
 

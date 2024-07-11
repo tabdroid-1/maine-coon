@@ -1,6 +1,6 @@
 #include <glad/gles3.h>
 
-#include "Drivers/gles3/GLES3.h"
+#include "GLES3.h"
 
 namespace MaineCoon {
 

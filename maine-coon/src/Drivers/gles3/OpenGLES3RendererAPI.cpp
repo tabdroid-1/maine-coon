@@ -1,6 +1,5 @@
-#include "Drivers/gles3/OpenGLES3RendererAPI.h"
-#include "Drivers/gles3/GLES3.h"
-#include "mcpch.h"
+#include "OpenGLES3RendererAPI.h"
+#include "GLES3.h"
 
 #include <glad/gles3.h>
 
@@ -49,7 +48,7 @@ void OpenGLES3RendererAPI::SetViewport(uint32_t x, uint32_t y, uint32_t width, u
     GLES3::GL()->Viewport(x, y, width, height);
 }
 
-void OpenGLES3RendererAPI::SetClearColor(const glm::vec4& color)
+void OpenGLES3RendererAPI::SetClearColor(const Vector4& color)
 {
     GLES3::GL()->ClearColor(color.r, color.g, color.b, color.a);
 }

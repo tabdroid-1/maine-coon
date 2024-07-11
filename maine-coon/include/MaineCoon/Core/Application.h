@@ -8,11 +8,11 @@
 #include "MaineCoon/Core/Layer/LayerStack.h"
 #include "MaineCoon/Core/Window.h"
 
-#include "MaineCoon/UI/ImGui/ImGuiLayer.h"
-
 int main(int argc, char** argv);
 
 namespace MaineCoon {
+
+class ImGuiLayer;
 
 struct ApplicationCommandLineArgs {
     int Count = 0;

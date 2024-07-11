@@ -16,6 +16,7 @@ if(APPLE)
 endif()
 
 set(PROJECT_SOURCE_DIR "src")
+set(PROJECT_INCLUDE_DIR "include")
 set(PROJECT_VENDOR_DIR "vendor")
 
 # ##############################################################################
@@ -43,7 +44,6 @@ file(GLOB_RECURSE PROJECT_SOURCES
 
 # # Additional project sources (vendors, etc.)
 list(APPEND PROJECT_SOURCES
-        "${SPDLOG}/include/spdlog/spdlog.h"
         "${STB}/stb_image.h"
         "${STB}/stb_image.cpp"
         "${SDL2}/include/SDL.h"
@@ -52,22 +52,17 @@ list(APPEND PROJECT_SOURCES
 
 add_library(${PROJECT_NAME} STATIC ${PROJECT_SOURCES})
 
-target_include_directories(${PROJECT_NAME} PUBLIC 
-        ${PROJECT_SOURCES_DIR}
-        ${PROJECT_VENDOR_DIR}
-
-        ${SPDLOG}/include
-        ${OPENLAL}/include
-        ${LIBSNDFILE}/include
-        )
-
-
-include_directories(SYSTEM src)
-include_directories(${IMGUI})
-include_directories(${IMGUIZMO})
-include_directories(${STB})
-include_directories(${SDL2_INCLUDE_DIRS})
-include_directories(${TRACY})
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_VENDOR_DIR}) 
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_INCLUDE_DIR}) 
+target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCES_DIR}) 
+target_include_directories(${PROJECT_NAME} PUBLIC ${SPDLOG}/include) 
+target_include_directories(${PROJECT_NAME} PUBLIC ${OPENLAL}/include) 
+target_include_directories(${PROJECT_NAME} PUBLIC ${LIBSNDFILE}/include) 
+target_include_directories(${PROJECT_NAME} PRIVATE ${IMGUI}) 
+target_include_directories(${PROJECT_NAME} PRIVATE ${IMGUIZMO}) 
+target_include_directories(${PROJECT_NAME} PRIVATE ${STB}) 
+target_include_directories(${PROJECT_NAME} PUBLIC ${SDL2_INCLUDE_DIRS}) 
+target_include_directories(${PROJECT_NAME} PUBLIC ${TRACY}) 
 
 # ####################
 # Add Subdirectories
@@ -83,15 +78,18 @@ add_subdirectory(${LIBSNDFILE})
 if (WIN32)
 
 if (MSVC)
-    target_compile_options(${PROJECT_NAME} PRIVATE /experimental:c11atomics)
+    target_compile_options(${PROJECT_NAME} PRIVATE /experimental:c11atomics console)
 endif()
     message(STATUS "Generating scripts for Windows")
     target_link_libraries(${PROJECT_NAME} PRIVATE 
         imgui
-        spdlog
+        spdlog::spdlog
         SDL2::SDL2-static
         imguizmo
+        sndfile
         tracy 
+        mingw32
+        ${OPENAL-DIR}
         )
 elseif (UNIX AND NOT APPLE AND NOT ANDROID AND NOT EMSCRIPTEN)
 
@@ -153,10 +151,15 @@ endif()
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 
 # Ensure that hot-reload is enabled for VS
-if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+# if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /ZI")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /SUBSYSTEM:CONSOLE")
     set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} /SAFESEH:NO")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SAFESEH:NO")
-endif()
 
-target_precompile_headers(${PROJECT_NAME} PRIVATE "${PROJECT_SOURCE_DIR}/mcpch.h")
+    target_link_options(${PROJECT_NAME} PUBLIC -mwindows)
+    target_link_options(${PROJECT_NAME} PUBLIC -mconsole)
+ 
+# endif()
+
+target_precompile_headers(${PROJECT_NAME} PRIVATE "${PROJECT_INCLUDE_DIR}/mcpch.h")

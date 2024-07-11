@@ -2,7 +2,7 @@
 
 #include "MaineCoon/Core/Application.h"
 #include "MaineCoon/Utils/PlatformUtils.h"
-#include "tbpch.h"
+#include "mcpch.h"
 
 #include <SDL.h>
 

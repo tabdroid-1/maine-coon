@@ -1,6 +1,5 @@
-#include "Drivers/gl33/OpenGL33RendererAPI.h"
-#include "Drivers/gl33/GL33.h"
-#include "mcpch.h"
+#include "OpenGL33RendererAPI.h"
+#include "GL33.h"
 
 #include <glad/gl33.h>
 
@@ -22,7 +21,7 @@ void OpenGL33RendererAPI::SetViewport(uint32_t x, uint32_t y, uint32_t width, ui
     GL33::GL()->Viewport(x, y, width, height);
 }
 
-void OpenGL33RendererAPI::SetClearColor(const glm::vec4& color)
+void OpenGL33RendererAPI::SetClearColor(const Vector4& color)
 {
     GL33::GL()->ClearColor(color.r, color.g, color.b, color.a);
 }

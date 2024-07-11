@@ -1,5 +1,7 @@
 #pragma once
 
+#include <mcpch.h>
+
 namespace MaineCoon {
 
 namespace Utils {
@@ -48,29 +50,16 @@ namespace Utils {
         return alignedSize;
     }
 
-    inline std::string FormatAllocationSize(uint64_t size)
-    {
-        if (size / 1'000'000'000 >= 1)
-            return fmt::format("{:.4}(GiB)", (double)size / 1'000'000'000.0);
-        else if (size / 1'000'000 >= 1)
-            return fmt::format("{:.4}(MiB)", (double)size / 1'000'000.0);
-        else if (size / 1'000 >= 1)
-            return fmt::format("{:.4}(KiB)", (double)size / 1'000.0);
-        else
-            return fmt::format("{}(B)", size);
-    }
-
-    // inline void DecomposeMatrix(const glm::mat4& source, glm::vec3* translation, glm::quat* rotation, glm::vec3* scale)
+    // inline std::string FormatAllocationSize(uint64_t size)
     // {
-    //     glm::vec3 skew;
-    //     glm::vec4 perpective;
-    //
-    //     glm::decompose(source, *scale, *rotation, *translation, skew, perpective);
-    // };
-
-    // inline glm::mat4 ComposeMatrix(const glm::vec3& translation, const glm::quat& rotation, const glm::vec3& scale)
-    // {
-    //     return glm::translate(glm::mat4(1.0f), translation) * glm::mat4_cast(rotation) * glm::scale(glm::mat4(1.0f), scale);
+    //     if (size / 1'000'000'000 >= 1)
+    //         return fmt::format("{:.4}(GiB)", (double)size / 1'000'000'000.0);
+    //     else if (size / 1'000'000 >= 1)
+    //         return fmt::format("{:.4}(MiB)", (double)size / 1'000'000.0);
+    //     else if (size / 1'000 >= 1)
+    //         return fmt::format("{:.4}(KiB)", (double)size / 1'000.0);
+    //     else
+    //         return fmt::format("{}(B)", size);
     // }
 
     // NOTE: returns amount of mip levels excluding mip #0

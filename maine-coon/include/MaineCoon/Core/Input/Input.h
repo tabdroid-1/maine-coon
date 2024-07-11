@@ -1,13 +1,13 @@
 #pragma once
 
 #include <mcpch.h>
+
 #include "MaineCoon/Core/Input/GamepadCodes.h"
 #include "MaineCoon/Core/Input/KeyCodes.h"
 #include "MaineCoon/Core/Input/MouseCodes.h"
 #include <MaineCoon/Core/Events/MouseEvent.h>
 #include <MaineCoon/Core/Application.h>
-
-#include <glm/glm.hpp>
+#include "MaineCoon/Foundation/Types.h"
 
 struct _SDL_Joystick;
 typedef struct _SDL_Joystick SDL_Joystick;
@@ -20,8 +20,6 @@ struct GamepadInfo {
     bool isGamepad = false;
     bool ready = false;
     float deadZone = 0.1f;
-    // int axisCount;
-    // int buttonCount;
 };
 
 class Input {
@@ -32,7 +30,7 @@ public:
 
     static bool IsKeyPressed(KeyCode key);
     static bool IsMouseButtonPressed(MouseCode button);
-    static glm::vec2 GetMousePosition();
+    static Vector2 GetMousePosition();
     static float GetMouseX();
     static float GetMouseY();
 

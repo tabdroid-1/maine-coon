@@ -1,6 +1,5 @@
-#include "Drivers/gl33/OpenGL33Context.h"
-#include "Drivers/gl33/GL33.h"
-#include "mcpch.h"
+#include "OpenGL33Context.h"
+#include "GL33.h"
 
 #include <tracy/tracy/TracyOpenGL.hpp>
 

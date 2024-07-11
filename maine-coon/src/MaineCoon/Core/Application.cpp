@@ -4,6 +4,7 @@
 #include "MaineCoon/Utils/PlatformUtils.h"
 #include <MaineCoon/Asset/AssetManager.h>
 #include <MaineCoon/Audio/AudioEngine.h>
+#include "../UI/ImGui/ImGuiLayer.h"
 #include <imgui.h>
 
 namespace MaineCoon {

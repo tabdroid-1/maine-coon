@@ -1,6 +1,5 @@
-#include "Drivers/gl33/OpenGL33Texture.h"
-#include "Drivers/gl33/GL33.h"
-#include "mcpch.h"
+#include "OpenGL33Texture.h"
+#include "GL33.h"
 #include <stb_image.h>
 
 namespace MaineCoon {

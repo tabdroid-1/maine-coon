@@ -1,7 +1,6 @@
-#include "MaineCoon/UI/ImGui/ImGuiLayer.h"
+#include "ImGuiLayer.h"
 #include "mcpch.h"
 
-#include <Drivers/gl33/OpenGL33Context.h>
 #include <MaineCoon/Renderer/RendererAPI.h>
 #include <imgui.h>
 #include <imgui_internal.h>

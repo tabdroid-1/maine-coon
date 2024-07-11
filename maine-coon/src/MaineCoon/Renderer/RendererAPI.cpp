@@ -1,8 +1,8 @@
 #include "MaineCoon/Renderer/RendererAPI.h"
 #include "mcpch.h"
 
-#include "Drivers/gl33/OpenGL33RendererAPI.h"
-#include "Drivers/gles3/OpenGLES3RendererAPI.h"
+#include "../../Drivers/gl33/OpenGL33RendererAPI.h"
+#include "../../Drivers/gles3/OpenGLES3RendererAPI.h"
 
 namespace MaineCoon {
 

@@ -1,15 +1,15 @@
 #include "SDL_video.h"
 #ifdef MC_PLATFORM_ANDROID
 
-#include "Platforms/Android/AndroidWindow.h"
-#include "tbpch.h"
+#include "AndroidWindow.h"
+#include "mcpch.h"
 
-#include "MaineCoon/Core/Input.h"
+#include "MaineCoon/Core/Input/Input.h"
 #include "backends/imgui_impl_sdl2.h"
 
-#include "MaineCoon/Events/ApplicationEvent.h"
-#include "MaineCoon/Events/KeyEvent.h"
-#include "MaineCoon/Events/MouseEvent.h"
+#include "MaineCoon/Core/Events/ApplicationEvent.h"
+#include "MaineCoon/Core/Events/KeyEvent.h"
+#include "MaineCoon/Core/Events/MouseEvent.h"
 
 #include "MaineCoon/Renderer/Renderer.h"
 
@@ -47,7 +47,7 @@ void AndroidWindow::Init(const WindowProps& props)
     if (s_SDLWindowCount == 0) {
         MC_PROFILE_SCOPE_NAME("SDL Init");
         int success = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK);
-        MC_CORE_ASSERT(success, "Could not initialize GLFW!");
+        MC_CORE_ASSERT_TAGGED(success, "Could not initialize GLFW!");
     }
 
     {

@@ -1,16 +1,11 @@
 #ifdef MC_PLATFORM_WEB
 
-#include "Platforms/Web/WebWindow.h"
-#include "tbpch.h"
+#include "WebWindow.h"
+#include "mcpch.h"
 
-#include "MaineCoon/Input/Input.h"
+#include "MaineCoon/Core/Input/Input.h"
 #include "backends/imgui_impl_sdl2.h"
 
-#include "MaineCoon/Core/Events/ApplicationEvent.h"
-#include "MaineCoon/Core/Events/KeyEvent.h"
-#include "MaineCoon/Core/Events/MouseEvent.h"
-
-#include "Drivers/gl33/OpenGL33Context.h"
 #include "MaineCoon/Renderer/Renderer.h"
 
 #include <SDL.h>
@@ -49,7 +44,7 @@ void WebWindow::Init(const WindowProps& props)
     if (s_SDLWindowCount == 0) {
         MC_PROFILE_SCOPE_NAME("SDL Init");
         int success = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK);
-        MC_CORE_ASSERT(success, "Could not initialize GLFW!");
+        MC_CORE_ASSERT_TAGGED(success, "Could not initialize GLFW!");
     }
 
     {

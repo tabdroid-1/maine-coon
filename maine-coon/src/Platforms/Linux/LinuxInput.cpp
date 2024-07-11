@@ -1,9 +1,9 @@
 #ifdef MC_PLATFORM_LINUX
 
-#include "MaineCoon/Core/Input/Input.h"
 #include "mcpch.h"
 
-#include "MaineCoon/Core/Application.h"
+#include "MaineCoon/Core/Input/Input.h"
+
 #include "MaineCoon/Math/Math.h"
 #include <SDL.h>
 
@@ -22,14 +22,7 @@ bool Input::IsMouseButtonPressed(const MouseCode button)
     return (buttons & SDL_BUTTON(static_cast<int>(button))) != 0;
 }
 
-// glm::vec2 Input::GetMouseScroll()
-// {
-//     int x, y;
-//     // SDL_GetMouse;
-//     return { static_cast<float>(x), static_cast<float>(y) };
-// }
-
-glm::vec2 Input::GetMousePosition()
+Vector2 Input::GetMousePosition()
 {
     int x, y;
     SDL_GetMouseState(&x, &y);

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MaineCoon/Core/PlatformDetection.h"
+#include "../src/MaineCoon/Core/PlatformDetection.h"
 
 #include <memory>
 

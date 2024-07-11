@@ -1,6 +1,6 @@
 #pragma once
 
-#include <MaineCoon/Core/PlatformDetection.h>
+#include "../src/MaineCoon/Core/PlatformDetection.h"
 
 #ifdef MC_PLATFORM_WINDOWS
 #ifndef NOMINMAX
@@ -14,6 +14,7 @@
 #include <bit>
 #include <cassert>
 #include <cmath>
+#include <filesystem>
 #include <cstdint>
 #include <cstdio>
 #include <fstream>
@@ -25,6 +26,7 @@
 #include <queue>
 #include <random>
 #include <shared_mutex>
+#include <atomic>
 #include <sstream>
 #include <string>
 #include <thread>
@@ -32,8 +34,10 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <utility>
+#include <mutex>
 #include <vector>
 #include <typeindex>
+#include <climits>
 
 #include "MaineCoon/Core/UUID.h"
 #include "MaineCoon/Core/Assert.h"
@@ -44,5 +48,5 @@
 #include "Config.h"
 
 #ifdef MC_PLATFORM_WINDOWS
-#include <Windows.h>
+#include <windows.h>
 #endif

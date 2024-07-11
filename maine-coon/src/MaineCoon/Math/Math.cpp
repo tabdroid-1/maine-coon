@@ -1,4 +1,4 @@
-#include "Math.h"
+#include "MaineCoon/Math/Math.h"
 #include "mcpch.h"
 
 namespace MaineCoon::Math {
