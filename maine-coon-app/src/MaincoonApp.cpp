@@ -71,8 +71,3 @@ MaineCoon::Application* MaineCoon::CreateApplication(MaineCoon::ApplicationComma
     });
     return app;
 }
-
-int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
-{
-    return TabbyMain(__argc, __argv);
-}

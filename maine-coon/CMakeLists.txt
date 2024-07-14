@@ -15,6 +15,12 @@ if(APPLE)
     set(CMAKE_OBJCXX_EXTENSIONS OFF)
 endif()
 
+option(MAINECOON_DIST "Enable distrubition build" OFF)
+
+if(MAINECOON_DIST)
+    set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Build utility programs" FORCE)
+endif(MAINECOON_DIST)
+
 set(PROJECT_SOURCE_DIR "src")
 set(PROJECT_INCLUDE_DIR "include")
 set(PROJECT_VENDOR_DIR "vendor")
@@ -99,16 +105,32 @@ add_subdirectory(${LIBSNDFILE})
 
 if (WIN32)
 
-if (MSVC)
-    target_compile_options(${PROJECT_NAME} PRIVATE /experimental:c11atomics console)
-endif()
+    if (MSVC)
+        target_compile_options(${PROJECT_NAME} PRIVATE /experimental:c11atomics console)
 
-if (MINGW)
-    set(CMAKE_SYSTEM_NAME Windows)
-    set(ENABLE_STATIC_RUNTIME ON CACHE BOOL "Enable static runtime" FORCE)
-    target_compile_options(${PROJECT_NAME} PUBLIC -static)
-endif()
 
+        if(CMAKE_BUILD_TYPE MATCHES "Debug")
+            set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /ZI")
+            set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /SUBSYSTEM:CONSOLE")
+            set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} /SAFESEH:NO")
+            set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SAFESEH:NO")
+        endif()
+    endif()
+
+    if (MINGW)
+        set(CMAKE_SYSTEM_NAME Windows)
+        set(ENABLE_STATIC_RUNTIME ON CACHE BOOL "Enable static runtime" FORCE)
+        target_link_options(${PROJECT_NAME} PUBLIC -static)
+        target_compile_options(${PROJECT_NAME} PUBLIC -mconsole)
+
+        if(MAINECOON_DIST)
+            target_link_options(${PROJECT_NAME} PUBLIC -mwindows)
+        else()
+            target_link_options(${PROJECT_NAME} PUBLIC -mconsole)
+        endif()
+
+        # target_link_libraries(${PROJECT_NAME} PUBLIC mingw32) 
+    endif()
 
     message(STATUS "Generating scripts for Windows")
     target_link_libraries(${PROJECT_NAME} PRIVATE 
@@ -120,6 +142,8 @@ endif()
         tracy 
         OpenAL::OpenAL
         )
+
+
 elseif (UNIX AND NOT APPLE AND NOT ANDROID AND NOT EMSCRIPTEN)
 
     find_package(OpenAL)
@@ -178,17 +202,5 @@ if(CMAKE_BUILD_TYPE MATCHES "Debug")
 endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
-
-# Ensure that hot-reload is enabled for VS
-# if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /ZI")
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /SUBSYSTEM:CONSOLE")
-    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} /SAFESEH:NO")
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SAFESEH:NO")
-
-    target_link_options(${PROJECT_NAME} PUBLIC -mwindows)
-    target_link_options(${PROJECT_NAME} PUBLIC -mconsole)
- 
-# endif()
 
 target_precompile_headers(${PROJECT_NAME} PRIVATE "${PROJECT_INCLUDE_DIR}/mcpch.h")

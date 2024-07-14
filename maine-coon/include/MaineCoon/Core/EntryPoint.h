@@ -1,4 +1,4 @@
-// #pragma once
+#pragma once
 
 #include <MaineCoon/Core/Application.h>
 
@@ -38,7 +38,7 @@ int main(int argc, char** argv)
 
 #elif defined(MC_PLATFORM_WINDOWS)
 
-int TabbyMain(int argc, char** argv)
+int MaineCoonMain(int argc, char** argv)
 {
     MaineCoon::Log::Init();
 
@@ -53,13 +53,12 @@ int TabbyMain(int argc, char** argv)
 
 int main(int argc, char** argv)
 {
-    return TabbyMain(argc, argv);
+    return MaineCoonMain(argc, argv);
 }
 
-// TODO:
 // int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
 // {
-//     return TabbyMain(__argc, __argv);
+//     return MaineCoonMain(__argc, __argv);
 // }
 
 #elif defined(MC_PLATFORM_MACOS)

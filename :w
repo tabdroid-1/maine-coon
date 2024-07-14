@@ -51,6 +51,7 @@ else()
 endif()
 # Link libraries
 
+target_link_options(${PROJECT_NAME} PUBLIC -mconsole)
 target_link_libraries(${PROJECT_NAME}
         maine-coon
         )

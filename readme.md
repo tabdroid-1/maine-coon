@@ -43,13 +43,18 @@ For building web install emscriptem from their git repo. Installing from package
        git clone https://github.com/tabdroid-1/MaineCoon.git && mkdir MaineCoon/build && cd MaineCoon/build
         ```
     2. ```shell
-       cmake .. && make
+       cmake .. && make -j4
         ```
     
   - For Windows:  
-    1. ```shell
-        Todo
-        ```
+    - mingw (tested on linux. tried so hard on windows but failed. im not touching windows with 10 foot stick). You do not have to use 32bit only. For the example i will be using 32bit gcc
+      1. ```shell
+         git clone https://github.com/tabdroid-1/MaineCoon.git && mkdir MaineCoon/build && cd MaineCoon/build
+          ```
+      2. ```shell
+         cmake -DCMAKE_SYSTEM_NAME=Windows -DCMAKE_C_COMPILER=i686-w64-mingw32-gcc -DCMAKE_CXX_COMPILER=i686-w64-mingw32-g++ ..
+         make -j4
+          ```
 
   - For Android 
     1. ```shell
