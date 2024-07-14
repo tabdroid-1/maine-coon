@@ -47,16 +47,6 @@ void AL_APIENTRY alFlushMappedBufferDirectSOFT(ALCcontext *context, ALuint buffe
 #define AL_EFFECT_CONVOLUTION_SOFT               0xA000
 #define AL_CONVOLUTION_ORIENTATION_SOFT          0x100F /* same as AL_ORIENTATION */
 #define AL_EFFECTSLOT_STATE_SOFT                 0x199E
-typedef void (AL_APIENTRY*LPALAUXILIARYEFFECTSLOTPLAYSOFT)(ALuint slotid) AL_API_NOEXCEPT17;
-typedef void (AL_APIENTRY*LPALAUXILIARYEFFECTSLOTPLAYVSOFT)(ALsizei n, const ALuint *slotids) AL_API_NOEXCEPT17;
-typedef void (AL_APIENTRY*LPALAUXILIARYEFFECTSLOTSTOPSOFT)(ALuint slotid) AL_API_NOEXCEPT17;
-typedef void (AL_APIENTRY*LPALAUXILIARYEFFECTSLOTSTOPVSOFT)(ALsizei n, const ALuint *slotids) AL_API_NOEXCEPT17;
-#ifdef AL_ALEXT_PROTOTYPES
-AL_API void AL_APIENTRY alAuxiliaryEffectSlotPlaySOFT(ALuint slotid) AL_API_NOEXCEPT;
-AL_API void AL_APIENTRY alAuxiliaryEffectSlotPlayvSOFT(ALsizei n, const ALuint *slotids) AL_API_NOEXCEPT;
-AL_API void AL_APIENTRY alAuxiliaryEffectSlotStopSOFT(ALuint slotid) AL_API_NOEXCEPT;
-AL_API void AL_APIENTRY alAuxiliaryEffectSlotStopvSOFT(ALsizei n, const ALuint *slotids) AL_API_NOEXCEPT;
-#endif
 #endif
 
 #ifndef AL_SOFT_hold_on_disconnect
@@ -67,22 +57,31 @@ AL_API void AL_APIENTRY alAuxiliaryEffectSlotStopvSOFT(ALsizei n, const ALuint *
 
 #ifndef AL_EXT_32bit_formats
 #define AL_EXT_32bit_formats
-#define AL_FORMAT_MONO_I32                       0x1202 /* Same as AL_FORMAT_MONO32 */
-#define AL_FORMAT_STEREO_I32                     0x1203 /* Same as AL_FORMAT_STEREO32 */
-#define AL_FORMAT_REAR_I32                       0x19DB
-#define AL_FORMAT_REAR_FLOAT32                   0x19DC
-#define AL_FORMAT_QUAD_I32                       0x19DD
-#define AL_FORMAT_QUAD_FLOAT32                   0x19DE
-#define AL_FORMAT_51CHN_I32                      0x19DF
-#define AL_FORMAT_51CHN_FLOAT32                  0x19E0
-#define AL_FORMAT_61CHN_I32                      0x19E1
-#define AL_FORMAT_61CHN_FLOAT32                  0x19E2
-#define AL_FORMAT_71CHN_I32                      0x19E3
-#define AL_FORMAT_71CHN_FLOAT32                  0x19E4
+#define AL_FORMAT_MONO_I32                       0x19DB
+#define AL_FORMAT_STEREO_I32                     0x19DC
+#define AL_FORMAT_REAR_I32                       0x19DD
+#define AL_FORMAT_REAR_FLOAT32                   0x19DE
+#define AL_FORMAT_QUAD_I32                       0x19DF
+#define AL_FORMAT_QUAD_FLOAT32                   0x19E0
+#define AL_FORMAT_51CHN_I32                      0x19E1
+#define AL_FORMAT_51CHN_FLOAT32                  0x19E2
+#define AL_FORMAT_61CHN_I32                      0x19E3
+#define AL_FORMAT_61CHN_FLOAT32                  0x19E4
+#define AL_FORMAT_71CHN_I32                      0x19E5
+#define AL_FORMAT_71CHN_FLOAT32                  0x19E6
 
-#define AL_FORMAT_UHJ2CHN_I32                    0x19E5
-#define AL_FORMAT_UHJ3CHN_I32                    0x19E6
-#define AL_FORMAT_UHJ4CHN_I32                    0x19E7
+#define AL_FORMAT_BFORMAT2D_I32                  0x19E7
+#define AL_FORMAT_BFORMAT3D_I32                  0x19E8
+
+#define AL_FORMAT_UHJ2CHN_I32_SOFT               0x19E9
+#define AL_FORMAT_UHJ3CHN_I32_SOFT               0x19EA
+#define AL_FORMAT_UHJ4CHN_I32_SOFT               0x19EB
+#endif
+
+#ifndef AL_SOFT_source_panning
+#define AL_SOFT_source_panning
+#define AL_PANNING_ENABLED_SOFT                  0x19EC
+#define AL_PAN_SOFT                              0x19ED
 #endif
 
 /* Non-standard exports. Not part of any extension. */
@@ -95,10 +94,21 @@ void ALC_APIENTRY alsoft_set_log_callback(LPALSOFTLOGCALLBACK callback, void *us
 AL_API void AL_APIENTRY alSourceQueueBufferLayersSOFT(ALuint src, ALsizei nb,
     const ALuint *buffers) noexcept;
 
+AL_API void AL_APIENTRY alAuxiliaryEffectSlotPlaySOFT(ALuint slotid) noexcept;
+AL_API void AL_APIENTRY alAuxiliaryEffectSlotPlayvSOFT(ALsizei n, const ALuint *slotids) noexcept;
+AL_API void AL_APIENTRY alAuxiliaryEffectSlotStopSOFT(ALuint slotid) noexcept;
+AL_API void AL_APIENTRY alAuxiliaryEffectSlotStopvSOFT(ALsizei n, const ALuint *slotids) noexcept;
+
 AL_API ALint64SOFT AL_APIENTRY alGetInteger64SOFT(ALenum pname) AL_API_NOEXCEPT;
 AL_API void AL_APIENTRY alGetInteger64vSOFT(ALenum pname, ALint64SOFT *values) AL_API_NOEXCEPT;
 ALint64SOFT AL_APIENTRY alGetInteger64DirectSOFT(ALCcontext *context, ALenum pname) AL_API_NOEXCEPT;
 void AL_APIENTRY alGetInteger64vDirectSOFT(ALCcontext *context, ALenum pname, ALint64SOFT *values) AL_API_NOEXCEPT;
+
+/* Not included in the public headers or export list, as a precaution for apps
+ * that check these to determine the behavior of the multi-channel *32 formats.
+ */
+#define AL_FORMAT_MONO32                         0x1202
+#define AL_FORMAT_STEREO32                       0x1203
 
 #ifdef __cplusplus
 } /* extern "C" */

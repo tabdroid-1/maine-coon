@@ -7,12 +7,14 @@
 #include <cmath>
 #include <cstddef>
 #include <limits>
-#include <memory>
 #include <stdexcept>
+#include <vector>
 
 #include "alnumbers.h"
 #include "alnumeric.h"
+#include "alspan.h"
 #include "bsinc_defs.h"
+#include "opthelpers.h"
 #include "resampler_limits.h"
 
 
@@ -152,7 +154,7 @@ constexpr BSincHeader bsinc24_hdr{60, 23};
 
 
 template<const BSincHeader &hdr>
-struct BSincFilterArray {
+struct SIMDALIGN BSincFilterArray {
     alignas(16) std::array<float, hdr.total_size> mTable{};
 
     BSincFilterArray()
@@ -161,8 +163,7 @@ struct BSincFilterArray {
         static_assert(BSincPointsMax <= MaxResamplerPadding, "MaxResamplerPadding is too small");
 
         using filter_type = std::array<std::array<double,BSincPointsMax>,BSincPhaseCount>;
-        auto filterptr = std::make_unique<std::array<filter_type,BSincScaleCount>>();
-        const auto filter = filterptr->begin();
+        auto filter = std::vector<filter_type>(BSincScaleCount);
 
         const double besseli_0_beta{cyl_bessel_i(0, hdr.beta)};
 
@@ -279,7 +280,7 @@ struct BSincFilterArray {
     }
 
     [[nodiscard]] constexpr auto getHeader() const noexcept -> const BSincHeader& { return hdr; }
-    [[nodiscard]] constexpr auto getTable() const noexcept -> const float* { return mTable.data(); }
+    [[nodiscard]] constexpr auto getTable() const noexcept { return al::span{mTable}; }
 };
 
 const BSincFilterArray<bsinc12_hdr> bsinc12_filter{};

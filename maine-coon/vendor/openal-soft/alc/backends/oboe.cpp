@@ -273,6 +273,7 @@ void OboeCapture::open(std::string_view name)
     case DevFmtX61:
     case DevFmtX71:
     case DevFmtX714:
+    case DevFmtX7144:
     case DevFmtX3D71:
     case DevFmtAmbi3D:
         throw al::backend_exception{al::backend_error::DeviceError, "%s capture not supported",
@@ -345,16 +346,15 @@ bool OboeBackendFactory::init() { return true; }
 bool OboeBackendFactory::querySupport(BackendType type)
 { return type == BackendType::Playback || type == BackendType::Capture; }
 
-std::string OboeBackendFactory::probe(BackendType type)
+auto OboeBackendFactory::enumerate(BackendType type) -> std::vector<std::string>
 {
     switch(type)
     {
     case BackendType::Playback:
     case BackendType::Capture:
-        /* Include null char. */
-        return std::string{GetDeviceName()} + '\0';
+        return std::vector{std::string{GetDeviceName()}};
     }
-    return std::string{};
+    return {};
 }
 
 BackendPtr OboeBackendFactory::createBackend(DeviceBase *device, BackendType type)

@@ -9,10 +9,97 @@
 #include <type_traits>
 #include <utility>
 
+#include "alassert.h"
 #include "almalloc.h"
 #include "altraits.h"
 
 namespace al {
+
+/* This is here primarily to help ensure proper behavior for span's iterators,
+ * being an actual object with member functions instead of a raw pointer (which
+ * has requirements like + and - working with ptrdiff_t). This also helps
+ * silence clang-tidy's pointer arithmetic warnings for span and FlexArray
+ * iterators. It otherwise behaves like a plain pointer and should optimize
+ * accordingly.
+ *
+ * Shouldn't be needed once we use std::span in C++20.
+ */
+template<typename T>
+class ptr_wrapper {
+    static_assert(std::is_pointer_v<T>);
+    T mPointer{};
+
+public:
+    using value_type = std::remove_pointer_t<T>;
+    using size_type = std::size_t;
+    using difference_type = std::ptrdiff_t;
+    using pointer = value_type*;
+    using reference = value_type&;
+    using iterator_category = std::random_access_iterator_tag;
+
+    explicit constexpr ptr_wrapper(T ptr) : mPointer{ptr} { }
+
+    /* NOLINTBEGIN(cppcoreguidelines-pro-bounds-pointer-arithmetic) */
+    constexpr auto operator++() noexcept -> ptr_wrapper& { ++mPointer; return *this; }
+    constexpr auto operator--() noexcept -> ptr_wrapper& { --mPointer; return *this; }
+    constexpr auto operator++(int) noexcept -> ptr_wrapper
+    {
+        auto temp = *this;
+        ++*this;
+        return temp;
+    }
+    constexpr auto operator--(int) noexcept -> ptr_wrapper
+    {
+        auto temp = *this;
+        --*this;
+        return temp;
+    }
+
+    constexpr
+    auto operator+=(std::ptrdiff_t n) noexcept -> ptr_wrapper& { mPointer += n; return *this; }
+    constexpr
+    auto operator-=(std::ptrdiff_t n) noexcept -> ptr_wrapper& { mPointer -= n; return *this; }
+
+    [[nodiscard]] constexpr auto operator*() const noexcept -> value_type& { return *mPointer; }
+    [[nodiscard]] constexpr auto operator->() const noexcept -> value_type* { return mPointer; }
+    [[nodiscard]] constexpr
+    auto operator[](std::size_t idx) const noexcept -> value_type& {return mPointer[idx];}
+
+    [[nodiscard]] friend constexpr
+    auto operator+(const ptr_wrapper &lhs, std::ptrdiff_t n) noexcept -> ptr_wrapper
+    { return ptr_wrapper{lhs.mPointer + n}; }
+    [[nodiscard]] friend constexpr
+    auto operator+(std::ptrdiff_t n, const ptr_wrapper &rhs) noexcept -> ptr_wrapper
+    { return ptr_wrapper{n + rhs.mPointer}; }
+    [[nodiscard]] friend constexpr
+    auto operator-(const ptr_wrapper &lhs, std::ptrdiff_t n) noexcept -> ptr_wrapper
+    { return ptr_wrapper{lhs.mPointer - n}; }
+
+    [[nodiscard]] friend constexpr
+    auto operator-(const ptr_wrapper &lhs, const ptr_wrapper &rhs)noexcept->std::ptrdiff_t
+    { return lhs.mPointer - rhs.mPointer; }
+
+    [[nodiscard]] friend constexpr
+    auto operator==(const ptr_wrapper &lhs, const ptr_wrapper &rhs) noexcept -> bool
+    { return lhs.mPointer == rhs.mPointer; }
+    [[nodiscard]] friend constexpr
+    auto operator!=(const ptr_wrapper &lhs, const ptr_wrapper &rhs) noexcept -> bool
+    { return lhs.mPointer != rhs.mPointer; }
+    [[nodiscard]] friend constexpr
+    auto operator<=(const ptr_wrapper &lhs, const ptr_wrapper &rhs) noexcept -> bool
+    { return lhs.mPointer <= rhs.mPointer; }
+    [[nodiscard]] friend constexpr
+    auto operator>=(const ptr_wrapper &lhs, const ptr_wrapper &rhs) noexcept -> bool
+    { return lhs.mPointer >= rhs.mPointer; }
+    [[nodiscard]] friend constexpr
+    auto operator<(const ptr_wrapper &lhs, const ptr_wrapper &rhs) noexcept -> bool
+    { return lhs.mPointer < rhs.mPointer; }
+    [[nodiscard]] friend constexpr
+    auto operator>(const ptr_wrapper &lhs, const ptr_wrapper &rhs) noexcept -> bool
+    { return lhs.mPointer > rhs.mPointer; }
+    /* NOLINTEND(cppcoreguidelines-pro-bounds-pointer-arithmetic) */
+};
+
 
 inline constexpr std::size_t dynamic_extent{static_cast<std::size_t>(-1)};
 
@@ -61,15 +148,15 @@ public:
     using element_type = T;
     using value_type = std::remove_cv_t<T>;
     using size_type = std::size_t;
-    using difference_type = ptrdiff_t;
+    using difference_type = std::ptrdiff_t;
 
     using pointer = T*;
     using const_pointer = const T*;
     using reference = T&;
     using const_reference = const T&;
 
-    using iterator = pointer;
-    using const_iterator = const_pointer;
+    using iterator = ptr_wrapper<pointer>;
+    using const_iterator = ptr_wrapper<const_pointer>;
     using reverse_iterator = std::reverse_iterator<iterator>;
     using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
@@ -78,12 +165,11 @@ public:
     template<bool is0=(extent == 0), REQUIRES(is0)>
     constexpr span() noexcept { }
     template<typename U>
-    constexpr explicit span(U iter, size_type size_ [[maybe_unused]])
-        : mData{::al::to_address(iter)}
-    { assert(size_ == extent); }
+    constexpr explicit span(U iter, size_type size_) : mData{::al::to_address(iter)}
+    { alassert(size_ == extent); }
     template<typename U, typename V, REQUIRES(!std::is_convertible<V,std::size_t>::value)>
-    constexpr explicit span(U first, V last [[maybe_unused]]) : mData{::al::to_address(first)}
-    { assert(static_cast<std::size_t>(last-first) == extent); }
+    constexpr explicit span(U first, V last) : mData{::al::to_address(first)}
+    { alassert(static_cast<std::size_t>(last-first) == extent); }
 
     template<std::size_t N>
     constexpr span(type_identity_t<element_type> (&arr)[N]) noexcept /* NOLINT(*-avoid-c-arrays) */
@@ -102,7 +188,7 @@ public:
     template<typename U, std::size_t N, REQUIRES(!std::is_same<element_type,U>::value
         && detail_::is_array_compatible<U,element_type> && N == dynamic_extent)>
     constexpr explicit span(const span<U,N> &span_) noexcept : mData{std::data(span_)}
-    { assert(std::size(span_) == extent); }
+    { alassert(std::size(span_) == extent); }
     template<typename U, std::size_t N, REQUIRES(!std::is_same<element_type,U>::value
         && detail_::is_array_compatible<U,element_type> && N == extent)>
     constexpr span(const span<U,N> &span_) noexcept : mData{std::data(span_)} { }
@@ -119,27 +205,29 @@ public:
     [[nodiscard]] constexpr auto size_bytes() const noexcept -> size_type { return E * sizeof(value_type); }
     [[nodiscard]] constexpr auto empty() const noexcept -> bool { return E == 0; }
 
-    [[nodiscard]] constexpr auto begin() const noexcept -> iterator { return mData; }
-    [[nodiscard]] constexpr auto end() const noexcept -> iterator { return mData+E; }
-    [[nodiscard]] constexpr auto cbegin() const noexcept -> const_iterator { return mData; }
-    [[nodiscard]] constexpr auto cend() const noexcept -> const_iterator { return mData+E; }
+    [[nodiscard]] constexpr auto begin() const noexcept -> iterator { return iterator{mData}; }
+    [[nodiscard]] constexpr auto end() const noexcept -> iterator { return iterator{mData+E}; }
+    [[nodiscard]] constexpr
+    auto cbegin() const noexcept -> const_iterator { return const_iterator{mData}; }
+    [[nodiscard]] constexpr
+    auto cend() const noexcept -> const_iterator { return const_iterator{mData+E}; }
 
-    [[nodiscard]] constexpr auto rbegin() const noexcept -> reverse_iterator { return reverse_iterator{end()}; }
-    [[nodiscard]] constexpr auto rend() const noexcept -> reverse_iterator { return reverse_iterator{begin()}; }
-    [[nodiscard]] constexpr auto crbegin() const noexcept -> const_reverse_iterator
-    { return const_reverse_iterator{cend()}; }
-    [[nodiscard]] constexpr auto crend() const noexcept -> const_reverse_iterator
-    { return const_reverse_iterator{cbegin()}; }
+    [[nodiscard]] constexpr auto rbegin() const noexcept -> reverse_iterator { return end(); }
+    [[nodiscard]] constexpr auto rend() const noexcept -> reverse_iterator { return begin(); }
+    [[nodiscard]] constexpr
+    auto crbegin() const noexcept -> const_reverse_iterator { return cend(); }
+    [[nodiscard]] constexpr
+    auto crend() const noexcept -> const_reverse_iterator { return cbegin(); }
 
     template<std::size_t C>
-    [[nodiscard]] constexpr auto first() const -> span<element_type,C>
+    [[nodiscard]] constexpr auto first() const noexcept -> span<element_type,C>
     {
         static_assert(E >= C, "New size exceeds original capacity");
         return span<element_type,C>{mData, C};
     }
 
     template<std::size_t C>
-    [[nodiscard]] constexpr auto last() const -> span<element_type,C>
+    [[nodiscard]] constexpr auto last() const noexcept -> span<element_type,C>
     {
         static_assert(E >= C, "New size exceeds original capacity");
         return span<element_type,C>{mData+(E-C), C};
@@ -147,7 +235,7 @@ public:
 
     template<std::size_t O, std::size_t C>
     [[nodiscard]] constexpr
-    auto subspan() const -> std::enable_if_t<C!=dynamic_extent,span<element_type,C>>
+    auto subspan() const noexcept -> std::enable_if_t<C!=dynamic_extent,span<element_type,C>>
     {
         static_assert(E >= O, "Offset exceeds extent");
         static_assert(E-O >= C, "New size exceeds original capacity");
@@ -156,7 +244,7 @@ public:
 
     template<std::size_t O, std::size_t C=dynamic_extent>
     [[nodiscard]] constexpr
-    auto subspan() const -> std::enable_if_t<C==dynamic_extent,span<element_type,E-O>>
+    auto subspan() const noexcept -> std::enable_if_t<C==dynamic_extent,span<element_type,E-O>>
     {
         static_assert(E >= O, "Offset exceeds extent");
         return span<element_type,E-O>{mData+O, E-O};
@@ -166,12 +254,13 @@ public:
      * defining the specialization. As a result, these methods need to be
      * defined later.
      */
-    [[nodiscard]] constexpr auto first(std::size_t count) const
+    [[nodiscard]] constexpr
+    auto first(std::size_t count) const noexcept -> span<element_type,dynamic_extent>;
+    [[nodiscard]] constexpr
+    auto last(std::size_t count) const noexcept -> span<element_type,dynamic_extent>;
+    [[nodiscard]] constexpr
+    auto subspan(std::size_t offset, std::size_t count=dynamic_extent) const noexcept
         -> span<element_type,dynamic_extent>;
-    [[nodiscard]] constexpr auto last(std::size_t count) const
-        -> span<element_type,dynamic_extent>;
-    [[nodiscard]] constexpr auto subspan(std::size_t offset,
-        std::size_t count=dynamic_extent) const -> span<element_type,dynamic_extent>;
 
 private:
     pointer mData{nullptr};
@@ -190,8 +279,8 @@ public:
     using reference = T&;
     using const_reference = const T&;
 
-    using iterator = pointer;
-    using const_iterator = const_pointer;
+    using iterator = ptr_wrapper<pointer>;
+    using const_iterator = ptr_wrapper<const_pointer>;
     using reverse_iterator = std::reverse_iterator<iterator>;
     using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
@@ -231,84 +320,79 @@ public:
 
     [[nodiscard]] constexpr auto front() const -> reference { return mData[0]; }
     [[nodiscard]] constexpr auto back() const -> reference { return mData[mDataLength-1]; }
-    [[nodiscard]] constexpr auto operator[](size_type idx) const -> reference { return mData[idx]; }
+    [[nodiscard]] constexpr auto operator[](size_type idx) const -> reference {return mData[idx];}
     [[nodiscard]] constexpr auto data() const noexcept -> pointer { return mData; }
 
     [[nodiscard]] constexpr auto size() const noexcept -> size_type { return mDataLength; }
-    [[nodiscard]] constexpr auto size_bytes() const noexcept -> size_type { return mDataLength * sizeof(value_type); }
+    [[nodiscard]] constexpr
+    auto size_bytes() const noexcept -> size_type { return mDataLength * sizeof(value_type); }
     [[nodiscard]] constexpr auto empty() const noexcept -> bool { return mDataLength == 0; }
 
-    [[nodiscard]] constexpr auto begin() const noexcept -> iterator { return mData; }
-    [[nodiscard]] constexpr auto end() const noexcept -> iterator { return mData+mDataLength; }
-    [[nodiscard]] constexpr auto cbegin() const noexcept -> const_iterator { return mData; }
-    [[nodiscard]] constexpr auto cend() const noexcept -> const_iterator { return mData+mDataLength; }
+    [[nodiscard]] constexpr auto begin() const noexcept -> iterator { return iterator{mData}; }
+    [[nodiscard]] constexpr
+    auto end() const noexcept -> iterator { return iterator{mData+mDataLength}; }
+    [[nodiscard]] constexpr
+    auto cbegin() const noexcept -> const_iterator { return const_iterator{mData}; }
+    [[nodiscard]] constexpr
+    auto cend() const noexcept -> const_iterator { return const_iterator{mData+mDataLength}; }
 
-    [[nodiscard]] constexpr auto rbegin() const noexcept -> reverse_iterator { return reverse_iterator{end()}; }
-    [[nodiscard]] constexpr auto rend() const noexcept -> reverse_iterator { return reverse_iterator{begin()}; }
-    [[nodiscard]] constexpr auto crbegin() const noexcept -> const_reverse_iterator
-    { return const_reverse_iterator{cend()}; }
-    [[nodiscard]] constexpr auto crend() const noexcept -> const_reverse_iterator
-    { return const_reverse_iterator{cbegin()}; }
+    [[nodiscard]] constexpr auto rbegin() const noexcept -> reverse_iterator { return end(); }
+    [[nodiscard]] constexpr auto rend() const noexcept -> reverse_iterator { return begin(); }
+    [[nodiscard]] constexpr
+    auto crbegin() const noexcept -> const_reverse_iterator { return cend(); }
+    [[nodiscard]] constexpr
+    auto crend() const noexcept -> const_reverse_iterator { return cbegin(); }
 
     template<std::size_t C>
-    [[nodiscard]] constexpr auto first() const -> span<element_type,C>
+    [[nodiscard]] constexpr auto first() const noexcept -> span<element_type,C>
     {
-        if(C > mDataLength)
-            throw std::out_of_range{"Subspan count out of range"};
+        assert(C <= mDataLength);
         return span<element_type,C>{mData, C};
     }
 
-    [[nodiscard]] constexpr auto first(std::size_t count) const -> span
+    [[nodiscard]] constexpr auto first(std::size_t count) const noexcept -> span
     {
-        if(count > mDataLength)
-            throw std::out_of_range{"Subspan count out of range"};
+        assert(count <= mDataLength);
         return span{mData, count};
     }
 
     template<std::size_t C>
-    [[nodiscard]] constexpr auto last() const -> span<element_type,C>
+    [[nodiscard]] constexpr auto last() const noexcept -> span<element_type,C>
     {
-        if(C > mDataLength)
-            throw std::out_of_range{"Subspan count out of range"};
+        assert(C <= mDataLength);
         return span<element_type,C>{mData+mDataLength-C, C};
     }
 
-    [[nodiscard]] constexpr auto last(std::size_t count) const -> span
+    [[nodiscard]] constexpr auto last(std::size_t count) const noexcept -> span
     {
-        if(count > mDataLength)
-            throw std::out_of_range{"Subspan count out of range"};
+        assert(count <= mDataLength);
         return span{mData+mDataLength-count, count};
     }
 
     template<std::size_t O, std::size_t C>
     [[nodiscard]] constexpr
-    auto subspan() const -> std::enable_if_t<C!=dynamic_extent,span<element_type,C>>
+    auto subspan() const noexcept -> std::enable_if_t<C!=dynamic_extent,span<element_type,C>>
     {
-        if(O > mDataLength)
-            throw std::out_of_range{"Subspan offset out of range"};
-        if(C > mDataLength-O)
-            throw std::out_of_range{"Subspan length out of range"};
+        assert(O <= mDataLength);
+        assert(C <= mDataLength-O);
         return span<element_type,C>{mData+O, C};
     }
 
     template<std::size_t O, std::size_t C=dynamic_extent>
     [[nodiscard]] constexpr
-    auto subspan() const -> std::enable_if_t<C==dynamic_extent,span<element_type,C>>
+    auto subspan() const noexcept -> std::enable_if_t<C==dynamic_extent,span<element_type,C>>
     {
-        if(O > mDataLength)
-            throw std::out_of_range{"Subspan offset out of range"};
+        assert(O <= mDataLength);
         return span<element_type,C>{mData+O, mDataLength-O};
     }
 
     [[nodiscard]] constexpr
-    auto subspan(std::size_t offset, std::size_t count=dynamic_extent) const -> span
+    auto subspan(std::size_t offset, std::size_t count=dynamic_extent) const noexcept -> span
     {
-        if(offset > mDataLength)
-            throw std::out_of_range{"Subspan offset out of range"};
+        assert(offset <= mDataLength);
         if(count != dynamic_extent)
         {
-            if(count > mDataLength-offset)
-                throw std::out_of_range{"Subspan length out of range"};
+            assert(count <= mDataLength-offset);
             return span{mData+offset, count};
         }
         return span{mData+offset, mDataLength-offset};
@@ -321,36 +405,32 @@ private:
 
 template<typename T, std::size_t E>
 [[nodiscard]] constexpr
-auto span<T,E>::first(std::size_t count) const -> span<element_type,dynamic_extent>
+auto span<T,E>::first(std::size_t count) const noexcept -> span<element_type,dynamic_extent>
 {
-    if(count > size())
-        throw std::out_of_range{"Subspan count out of range"};
+    assert(count <= size());
     return span<element_type>{mData, count};
 }
 
 template<typename T, std::size_t E>
 [[nodiscard]] constexpr
-auto span<T,E>::last(std::size_t count) const -> span<element_type,dynamic_extent>
+auto span<T,E>::last(std::size_t count) const noexcept -> span<element_type,dynamic_extent>
 {
-    if(count > size())
-        throw std::out_of_range{"Subspan count out of range"};
+    assert(count <= size());
     return span<element_type>{mData+size()-count, count};
 }
 
 template<typename T, std::size_t E>
 [[nodiscard]] constexpr
-auto span<T,E>::subspan(std::size_t offset, std::size_t count) const
+auto span<T,E>::subspan(std::size_t offset, std::size_t count) const noexcept
     -> span<element_type,dynamic_extent>
 {
-    if(offset > size())
-        throw std::out_of_range{"Subspan offset out of range"};
+    assert(offset <= size());
     if(count != dynamic_extent)
     {
-        if(count > size()-offset)
-            throw std::out_of_range{"Subspan length out of range"};
-        return span{mData+offset, count};
+        assert(count <= size()-offset);
+        return span<element_type>{mData+offset, count};
     }
-    return span{mData+offset, size()-offset};
+    return span<element_type>{mData+offset, size()-offset};
 }
 
 

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 project(maine-coon
-	VERSION 0.0.1
+	VERSION 0.0.3
     DESCRIPTION "Application Framework"
 	HOMEPAGE_URL "https://github.com/tabdroid-1/MaineCoon"
     LANGUAGES CXX
@@ -30,7 +30,7 @@ set(SPDLOG "${PROJECT_VENDOR_DIR}/spdlog")
 set(IMGUI "${PROJECT_VENDOR_DIR}/imgui")
 set(IMGUIZMO "${PROJECT_VENDOR_DIR}/imguizmo")
 set(TRACY "${PROJECT_VENDOR_DIR}/tracy")
-set(OPENLAL "${PROJECT_VENDOR_DIR}/openal-soft")
+set(OPENAL "${PROJECT_VENDOR_DIR}/openal-soft")
 set(LIBSNDFILE "${PROJECT_VENDOR_DIR}/libsndfile")
 
 # ##############################################################################
@@ -56,7 +56,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_VENDOR_DIR})
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_INCLUDE_DIR}) 
 target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCES_DIR}) 
 target_include_directories(${PROJECT_NAME} PUBLIC ${SPDLOG}/include) 
-target_include_directories(${PROJECT_NAME} PUBLIC ${OPENLAL}/include) 
+target_include_directories(${PROJECT_NAME} PUBLIC ${OPENAL}/include) 
 target_include_directories(${PROJECT_NAME} PUBLIC ${LIBSNDFILE}/include) 
 target_include_directories(${PROJECT_NAME} PRIVATE ${IMGUI}) 
 target_include_directories(${PROJECT_NAME} PRIVATE ${IMGUIZMO}) 
@@ -68,7 +68,29 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${TRACY})
 # Add Subdirectories
 # ####################
 
+set(ALSOFT_UTILS OFF CACHE BOOL "Build utility programs" FORCE)
+set(ALSOFT_NO_CONFIG_UTIL OFF CACHE BOOL "Disable building the alsoft-config utility" FORCE)
+set(ALSOFT_EXAMPLES OFF CACHE BOOL "Build example programs" FORCE)
+set(ALSOFT_TESTS OFF CACHE BOOL "Build test programs" FORCE)
+set(ALSOFT_INSTALL  OFF CACHE BOOL "Install main library" FORCE)
+set(ALSOFT_INSTALL_CONFIG CACHE BOOL "Install alsoft.conf sample configuration file" FORCE)
+set(ALSOFT_INSTALL_HRTF_DATA CACHE BOOL "Install HRTF data files" FORCE)
+set(ALSOFT_INSTALL_AMBDEC_PRESETS CACHE BOOL "Install AmbDec preset files" FORCE)
+set(ALSOFT_INSTALL_EXAMPLES BOOL "Install example programs (alplay, alstream, ...)" FORCE)
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build shared libraries (libsndfile)" FORCE)
+set(BUILD_PROGRAMS OFF CACHE BOOL "Build programs (libsndfile)" FORCE)
+set(BUILD_EXAMPLES OFF CACHE BOOL "Build examples (libsndfile)" FORCE)
+set(BUILD_TESTING OFF CACHE BOOL "Build tests (libsndfile)" FORCE)
+set(SDL_SHARED OFF CACHE BOOL "Build a shared version of the library" FORCE)
+set(SDL_STATIC ON CACHE BOOL "Build a static version of the library" FORCE)
+set(SDL_TEST OFF CACHE BOOL "Build the SDL2_test library" FORCE)
+
+if(NOT ANDROID)
+    set(SDL2_DISABLE_SDL2MAIN ON CACHE BOOL "Disable SDL_main" FORCE)
+endif()
+
 add_subdirectory(${SDL2} EXCLUDE_FROM_ALL)
+add_subdirectory(${OPENAL})
 add_subdirectory(${TRACY})
 add_subdirectory(${SPDLOG})
 add_subdirectory(${IMGUI})
@@ -80,6 +102,14 @@ if (WIN32)
 if (MSVC)
     target_compile_options(${PROJECT_NAME} PRIVATE /experimental:c11atomics console)
 endif()
+
+if (MINGW)
+    set(CMAKE_SYSTEM_NAME Windows)
+    set(ENABLE_STATIC_RUNTIME ON CACHE BOOL "Enable static runtime" FORCE)
+    target_compile_options(${PROJECT_NAME} PUBLIC -static)
+endif()
+
+
     message(STATUS "Generating scripts for Windows")
     target_link_libraries(${PROJECT_NAME} PRIVATE 
         imgui
@@ -88,8 +118,7 @@ endif()
         imguizmo
         sndfile
         tracy 
-        mingw32
-        ${OPENAL-DIR}
+        OpenAL::OpenAL
         )
 elseif (UNIX AND NOT APPLE AND NOT ANDROID AND NOT EMSCRIPTEN)
 

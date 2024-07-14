@@ -3,10 +3,10 @@
 
 #include <array>
 #include <atomic>
+#include <cstdint>
 #include <deque>
 #include <memory>
 #include <mutex>
-#include <stdint.h>
 #include <string>
 #include <string_view>
 #include <unordered_map>
@@ -41,9 +41,9 @@ struct DebugGroup;
 struct EffectSlotSubList;
 struct SourceSubList;
 
-enum class DebugSource : uint8_t;
-enum class DebugType : uint8_t;
-enum class DebugSeverity : uint8_t;
+enum class DebugSource : std::uint8_t;
+enum class DebugType : std::uint8_t;
+enum class DebugSeverity : std::uint8_t;
 
 using uint = unsigned int;
 
@@ -542,20 +542,15 @@ ContextRef GetContextRef() noexcept;
 void UpdateContextProps(ALCcontext *context);
 
 
-extern bool TrapALError;
+inline bool TrapALError{false};
 
 
 #ifdef ALSOFT_EAX
-/* NOLINTBEGIN(readability-inconsistent-declaration-parameter-name)
- * These functions are defined using macros to forward them in a generic way to
- * implementation functions, which gives the parameters generic names.
- */
-ALenum AL_APIENTRY EAXSet(const GUID *property_set_id, ALuint property_id,
-    ALuint property_source_id, ALvoid *property_value, ALuint property_value_size) noexcept;
+auto AL_APIENTRY EAXSet(const GUID *property_set_id, ALuint property_id,
+    ALuint source_id, ALvoid *value, ALuint value_size) noexcept -> ALenum;
 
-ALenum AL_APIENTRY EAXGet(const GUID *property_set_id, ALuint property_id,
-    ALuint property_source_id, ALvoid *property_value, ALuint property_value_size) noexcept;
-/* NOLINTEND(readability-inconsistent-declaration-parameter-name) */
+auto AL_APIENTRY EAXGet(const GUID *property_set_id, ALuint property_id,
+    ALuint source_id, ALvoid *value, ALuint value_size) noexcept -> ALenum;
 #endif // ALSOFT_EAX
 
 #endif /* ALC_CONTEXT_H */

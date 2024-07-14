@@ -80,6 +80,12 @@ using uint = unsigned int;
 
 namespace {
 
+#if defined(__GNUC__) || defined(_MSC_VER)
+#define RESTRICT __restrict
+#else
+#define RESTRICT
+#endif
+
 /* Vector support macros: the rest of the code is independent of
  * SSE/Altivec/NEON -- adding support for other platforms with 4-element
  * vectors should be limited to these macros
@@ -93,6 +99,7 @@ namespace {
  * Altivec support macros
  */
 #if defined(__ppc__) || defined(__ppc64__) || defined(__powerpc__) || defined(__powerpc64__)
+#include <altivec.h>
 using v4sf = vector float;
 constexpr uint SimdSize{4};
 force_inline v4sf vzero() noexcept { return (vector float)vec_splat_u8(0); }
@@ -113,14 +120,13 @@ force_inline float vextract0(v4sf v) noexcept { return vec_extract(v, 0); }
 
 force_inline void interleave2(v4sf in1, v4sf in2, v4sf &out1, v4sf &out2) noexcept
 {
-    v4sf tmp{vec_mergeh(in1, in2)};
+    out1 = vec_mergeh(in1, in2);
     out2 = vec_mergel(in1, in2);
-    out1 = tmp;
 }
 force_inline void uninterleave2(v4sf in1, v4sf in2, v4sf &out1, v4sf &out2) noexcept
 {
-    v4sf tmp{vec_perm(in1, in2, (vector unsigned char)(0,1,2,3,8,9,10,11,16,17,18,19,24,25,26,27))};
-    out2 = vec_perm(in1, in2, (vector unsigned char)(4,5,6,7,12,13,14,15,20,21,22,23,28,29,30,31));
+    out1 = vec_perm(in1, in2, (vector unsigned char){0,1,2,3,8,9,10,11,16,17,18,19,24,25,26,27});
+    out2 = vec_perm(in1, in2, (vector unsigned char){4,5,6,7,12,13,14,15,20,21,22,23,28,29,30,31});
     out1 = tmp;
 }
 
@@ -137,7 +143,7 @@ force_inline void vtranspose4(v4sf &x0, v4sf &x1, v4sf &x2, v4sf &x3) noexcept
 }
 
 force_inline v4sf vswaphl(v4sf a, v4sf b) noexcept
-{ return vec_perm(a,b, (vector unsigned char)(16,17,18,19,20,21,22,23,8,9,10,11,12,13,14,15)); }
+{ return vec_perm(a,b, (vector unsigned char){16,17,18,19,20,21,22,23,8,9,10,11,12,13,14,15}); }
 
 /*
  * SSE1 support macros
@@ -168,15 +174,13 @@ force_inline float vextract0(v4sf v) noexcept
 
 force_inline void interleave2(const v4sf in1, const v4sf in2, v4sf &out1, v4sf &out2) noexcept
 {
-    v4sf tmp{_mm_unpacklo_ps(in1, in2)};
+    out1 = _mm_unpacklo_ps(in1, in2);
     out2 = _mm_unpackhi_ps(in1, in2);
-    out1 = tmp;
 }
 force_inline void uninterleave2(v4sf in1, v4sf in2, v4sf &out1, v4sf &out2) noexcept
 {
-    v4sf tmp{_mm_shuffle_ps(in1, in2, _MM_SHUFFLE(2,0,2,0))};
+    out1 = _mm_shuffle_ps(in1, in2, _MM_SHUFFLE(2,0,2,0));
     out2 = _mm_shuffle_ps(in1, in2, _MM_SHUFFLE(3,1,3,1));
-    out1 = tmp;
 }
 
 force_inline void vtranspose4(v4sf &x0, v4sf &x1, v4sf &x2, v4sf &x3) noexcept
@@ -188,7 +192,7 @@ force_inline v4sf vswaphl(v4sf a, v4sf b) noexcept
 /*
  * ARM NEON support macros
  */
-#elif defined(__ARM_NEON) || defined(__aarch64__) || defined(__arm64)
+#elif defined(__ARM_NEON) || defined(__aarch64__) || defined(__arm64) || defined(_M_ARM64)
 
 #include <arm_neon.h>
 using v4sf = float32x4_t;
@@ -276,15 +280,13 @@ force_inline v4sf unpackhi(v4sf a, v4sf b) noexcept
 
 force_inline void interleave2(v4sf in1, v4sf in2, v4sf &out1, v4sf &out2) noexcept
 {
-    v4sf tmp{unpacklo(in1, in2)};
+    out1 = unpacklo(in1, in2);
     out2 = unpackhi(in1, in2);
-    out1 = tmp;
 }
 force_inline void uninterleave2(v4sf in1, v4sf in2, v4sf &out1, v4sf &out2) noexcept
 {
-    v4sf tmp{in1[0], in1[2], in2[0], in2[2]};
+    out1 = v4sf{in1[0], in1[2], in2[0], in2[2]};
     out2 = v4sf{in1[1], in1[3], in2[1], in2[3]};
-    out1 = tmp;
 }
 
 force_inline void vtranspose4(v4sf &x0, v4sf &x1, v4sf &x2, v4sf &x3) noexcept
@@ -322,7 +324,8 @@ force_inline constexpr v4sf ld_ps1(float a) noexcept { return a; }
 
 #else
 
-inline bool valigned(const float *ptr) noexcept
+[[maybe_unused]] inline
+auto valigned(const float *ptr) noexcept -> bool
 {
     static constexpr uintptr_t alignmask{SimdSize*sizeof(float) - 1};
     return (reinterpret_cast<uintptr_t>(ptr) & alignmask) == 0;
@@ -432,6 +435,13 @@ constexpr auto make_float_array(std::integer_sequence<T,N...>)
 constexpr auto V4sfAlignment = size_t(64);
 constexpr auto V4sfAlignVal = std::align_val_t(V4sfAlignment);
 
+/* NOLINTBEGIN(cppcoreguidelines-pro-bounds-pointer-arithmetic)
+ * FIXME: Converting this from raw pointers to spans or something will probably
+ * need significant work to maintain performance, given non-sequential range-
+ * checked accesses and lack of 'restrict' to indicate non-aliased memory. At
+ * least, some tests should be done to check the impact of using range-checked
+ * spans here before blindly switching.
+ */
 /*
   passf2 and passb2 has been merged here, fsign = -1 for passf2, +1 for passb2
 */
@@ -1808,7 +1818,7 @@ NOINLINE void pffft_real_preprocess(const size_t Ncvec, const v4sf *in, v4sf *RE
     const size_t dk{Ncvec/SimdSize}; // number of 4x4 matrix blocks
     /* fftpack order is f0r f1r f1i f2r f2i ... f(n-1)r f(n-1)i f(n)r */
 
-    std::array<float,SimdSize> Xr, Xi;
+    std::array<float,SimdSize> Xr{}, Xi{};
     for(size_t k{0};k < SimdSize;++k)
     {
         Xr[k] = vextract0(in[2*k]);
@@ -2294,4 +2304,5 @@ void pffft_transform_ordered(const PFFFT_Setup *setup, const float *input, float
     pffft_transform_internal(setup, input, output, work, direction, true);
 }
 
-#endif // defined(PFFFT_SIMD_DISABLE)
+#endif /* defined(PFFFT_SIMD_DISABLE) */
+/* NOLINTEND(cppcoreguidelines-pro-bounds-pointer-arithmetic) */

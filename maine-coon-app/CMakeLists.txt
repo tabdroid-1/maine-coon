@@ -63,6 +63,12 @@ target_include_directories(${PROJECT_NAME} PUBLIC
         "${PROJECT_SOURCE_DIR}"
         )
 
+if (MINGW)
+    set(CMAKE_SYSTEM_NAME Windows)
+    set(ENABLE_STATIC_RUNTIME ON)
+    target_compile_options(${PROJECT_NAME} PUBLIC -static)
+endif()
+
 if (EMSCRIPTEN)
 	append_linker_flags("-sOFFSCREEN_FRAMEBUFFER=1")
 	append_linker_flags("-sMIN_WEBGL_VERSION=2 -sMAX_WEBGL_VERSION=2")
@@ -81,33 +87,22 @@ if (EMSCRIPTEN)
 	# append_linker_flags("-sMIN_EDGE_VERSION=79") # Require Chromium-based Edge browser
 	append_linker_flags("-sMIN_CHROME_VERSION=80")
 
-endif (EMSCRIPTEN)
-
-###################################################################
-# Copy executable dependencies to CMake runtime output directory
-###################################################################
-if (WIN32)
-    # Copy library dlls -------------------------------------------
-    # file(GLOB_RECURSE LIB_DLLS
-    #         "${MAINECOON_LIB_DIR}/*.dll"
-    #         )
-    #
-    # foreach (dll ${LIB_DLLS})
-    #     file(COPY ${dll}
-    #             DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
-    # endforeach (dll)
-    # -------------------------------------------------------------
-endif ()
-
-if (DEFINED EMSCRIPTEN)
     set(CMAKE_EXECUTABLE_SUFFIX ".html")
     # This line is used to set your executable to build with the emscripten html
     # template so that you can directly open it.
     set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ".html")
     target_compile_definitions(${PROJECT_NAME} PUBLIC ASSETS_PATH="/assets/")
     # set(CMAKE_EXECUTABLE_SUFFIX ".wasm")
-  # Set the asset path macro in release mode to a relative path that assumes the
-  # assets folder is in the same directory as the game executable
+    # Set the asset path macro in release mode to a relative path that assumes the
+    # assets folder is in the same directory as the game executable
+
+endif (EMSCRIPTEN)
+
+###################################################################
+# Copy executable dependencies to CMake runtime output directory
+###################################################################
+
+if (DEFINED EMSCRIPTEN)
 
 endif (DEFINED EMSCRIPTEN)
 

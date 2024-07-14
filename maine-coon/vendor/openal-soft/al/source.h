@@ -88,6 +88,7 @@ struct ALsource {
     DirectMode DirectChannels{DirectMode::Off};
     SpatializeMode mSpatialize{SpatializeMode::Auto};
     SourceStereo mStereoMode{SourceStereo::Normal};
+    bool mPanningEnabled{false};
 
     bool DryGainHFAuto{true};
     bool WetGainAuto{true};
@@ -105,15 +106,18 @@ struct ALsource {
 
     float Radius{0.0f};
     float EnhWidth{0.593f};
+    float mPan{0.0f};
 
     /** Direct filter and auxiliary send info. */
-    struct {
+    struct DirectData {
         float Gain{};
         float GainHF{};
         float HFReference{};
         float GainLF{};
         float LFReference{};
-    } Direct;
+    };
+    DirectData Direct;
+
     struct SendData {
         ALeffectslot *Slot{};
         float Gain{};
@@ -151,7 +155,7 @@ struct ALsource {
     ALuint id{0};
 
 
-    ALsource();
+    ALsource() noexcept;
     ~ALsource();
 
     ALsource(const ALsource&) = delete;
@@ -538,7 +542,24 @@ private:
     struct Eax5SourceAllValidator {
         void operator()(const EAX50SOURCEPROPERTIES& props) const
         {
-            Eax3SourceAllValidator{}(static_cast<const Eax3Props&>(props));
+            Eax2SourceDirectValidator{}(props.lDirect);
+            Eax2SourceDirectHfValidator{}(props.lDirectHF);
+            Eax2SourceRoomValidator{}(props.lRoom);
+            Eax2SourceRoomHfValidator{}(props.lRoomHF);
+            Eax2SourceObstructionValidator{}(props.lObstruction);
+            Eax2SourceObstructionLfRatioValidator{}(props.flObstructionLFRatio);
+            Eax2SourceOcclusionValidator{}(props.lOcclusion);
+            Eax2SourceOcclusionLfRatioValidator{}(props.flOcclusionLFRatio);
+            Eax2SourceOcclusionRoomRatioValidator{}(props.flOcclusionRoomRatio);
+            Eax3SourceOcclusionDirectRatioValidator{}(props.flOcclusionDirectRatio);
+            Eax3SourceExclusionValidator{}(props.lExclusion);
+            Eax3SourceExclusionLfRatioValidator{}(props.flExclusionLFRatio);
+            Eax2SourceOutsideVolumeHfValidator{}(props.lOutsideVolumeHF);
+            Eax3SourceDopplerFactorValidator{}(props.flDopplerFactor);
+            Eax3SourceRolloffFactorValidator{}(props.flRolloffFactor);
+            Eax2SourceRoomRolloffFactorValidator{}(props.flRoomRolloffFactor);
+            Eax2SourceAirAbsorptionFactorValidator{}(props.flAirAbsorptionFactor);
+            Eax5SourceFlagsValidator{}(props.ulFlags);
             Eax5SourceMacroFXFactorValidator{}(props.flMacroFXFactor);
         }
     };
@@ -885,7 +906,7 @@ private:
         }
     }
 
-    static void eax_get_active_fx_slot_id(const EaxCall& call, const GUID* ids, size_t max_count);
+    static void eax_get_active_fx_slot_id(const EaxCall& call, const al::span<const GUID> src_ids);
     static void eax1_get(const EaxCall& call, const Eax1Props& props);
     static void eax2_get(const EaxCall& call, const Eax2Props& props);
     static void eax3_get_obstruction(const EaxCall& call, const Eax3Props& props);

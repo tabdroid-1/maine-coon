@@ -85,6 +85,7 @@ constexpr SLuint32 GetChannelMask(DevFmtChannels chans) noexcept
         SL_SPEAKER_BACK_RIGHT | SL_SPEAKER_SIDE_LEFT | SL_SPEAKER_SIDE_RIGHT |
         SL_SPEAKER_TOP_FRONT_LEFT | SL_SPEAKER_TOP_FRONT_RIGHT | SL_SPEAKER_TOP_BACK_LEFT |
         SL_SPEAKER_TOP_BACK_RIGHT;
+    case DevFmtX7144:
     case DevFmtAmbi3D:
         break;
     }
@@ -908,16 +909,15 @@ bool OSLBackendFactory::init() { return true; }
 bool OSLBackendFactory::querySupport(BackendType type)
 { return (type == BackendType::Playback || type == BackendType::Capture); }
 
-std::string OSLBackendFactory::probe(BackendType type)
+auto OSLBackendFactory::enumerate(BackendType type) -> std::vector<std::string>
 {
     switch(type)
     {
     case BackendType::Playback:
     case BackendType::Capture:
-        /* Include null char. */
-        return std::string{GetDeviceName()} + '\0';
+        return std::vector{std::string{GetDeviceName()}};
     }
-    return std::string{};
+    return {};
 }
 
 BackendPtr OSLBackendFactory::createBackend(DeviceBase *device, BackendType type)

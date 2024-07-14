@@ -787,14 +787,14 @@ typedef void (AL_APIENTRY *LPALGETSOURCEFVDIRECT)(ALCcontext *context, ALuint so
 typedef void (AL_APIENTRY *LPALGETSOURCEIDIRECT)(ALCcontext *context, ALuint source, ALenum param, ALint *value) AL_API_NOEXCEPT17;
 typedef void (AL_APIENTRY *LPALGETSOURCE3IDIRECT)(ALCcontext *context, ALuint source, ALenum param, ALint *value1, ALint *value2, ALint *value3) AL_API_NOEXCEPT17;
 typedef void (AL_APIENTRY *LPALGETSOURCEIVDIRECT)(ALCcontext *context, ALuint source, ALenum param, ALint *values) AL_API_NOEXCEPT17;
-typedef void (AL_APIENTRY *LPALSOURCEPLAYVDIRECT)(ALCcontext *context, ALsizei n, const ALuint *sources) AL_API_NOEXCEPT17;
-typedef void (AL_APIENTRY *LPALSOURCESTOPVDIRECT)(ALCcontext *context, ALsizei n, const ALuint *sources) AL_API_NOEXCEPT17;
-typedef void (AL_APIENTRY *LPALSOURCEREWINDVDIRECT)(ALCcontext *context, ALsizei n, const ALuint *sources) AL_API_NOEXCEPT17;
-typedef void (AL_APIENTRY *LPALSOURCEPAUSEVDIRECT)(ALCcontext *context, ALsizei n, const ALuint *sources) AL_API_NOEXCEPT17;
 typedef void (AL_APIENTRY *LPALSOURCEPLAYDIRECT)(ALCcontext *context, ALuint source) AL_API_NOEXCEPT17;
 typedef void (AL_APIENTRY *LPALSOURCESTOPDIRECT)(ALCcontext *context, ALuint source) AL_API_NOEXCEPT17;
 typedef void (AL_APIENTRY *LPALSOURCEREWINDDIRECT)(ALCcontext *context, ALuint source) AL_API_NOEXCEPT17;
 typedef void (AL_APIENTRY *LPALSOURCEPAUSEDIRECT)(ALCcontext *context, ALuint source) AL_API_NOEXCEPT17;
+typedef void (AL_APIENTRY *LPALSOURCEPLAYVDIRECT)(ALCcontext *context, ALsizei n, const ALuint *sources) AL_API_NOEXCEPT17;
+typedef void (AL_APIENTRY *LPALSOURCESTOPVDIRECT)(ALCcontext *context, ALsizei n, const ALuint *sources) AL_API_NOEXCEPT17;
+typedef void (AL_APIENTRY *LPALSOURCEREWINDVDIRECT)(ALCcontext *context, ALsizei n, const ALuint *sources) AL_API_NOEXCEPT17;
+typedef void (AL_APIENTRY *LPALSOURCEPAUSEVDIRECT)(ALCcontext *context, ALsizei n, const ALuint *sources) AL_API_NOEXCEPT17;
 typedef void (AL_APIENTRY *LPALSOURCEQUEUEBUFFERSDIRECT)(ALCcontext *context, ALuint source, ALsizei nb, const ALuint *buffers) AL_API_NOEXCEPT17;
 typedef void (AL_APIENTRY *LPALSOURCEUNQUEUEBUFFERSDIRECT)(ALCcontext *context, ALuint source, ALsizei nb, ALuint *buffers) AL_API_NOEXCEPT17;
 typedef void (AL_APIENTRY *LPALGENBUFFERSDIRECT)(ALCcontext *context, ALsizei n, ALuint *buffers) AL_API_NOEXCEPT17;
@@ -895,8 +895,8 @@ typedef void (AL_APIENTRY *LPALGETBUFFERPTRVDIRECTSOFT)(ALCcontext *context, ALu
 typedef void (AL_APIENTRY *LPALSOURCEPLAYATTIMEDIRECTSOFT)(ALCcontext *context, ALuint source, ALint64SOFT start_time) AL_API_NOEXCEPT17;
 typedef void (AL_APIENTRY *LPALSOURCEPLAYATTIMEVDIRECTSOFT)(ALCcontext *context, ALsizei n, const ALuint *sources, ALint64SOFT start_time) AL_API_NOEXCEPT17;
 /* EAX */
-typedef ALenum (AL_APIENTRY *LPEAXSETDIRECT)(ALCcontext *context, const struct _GUID *property_set_id, ALuint property_id, ALuint property_source_id, ALvoid *property_buffer, ALuint property_size) AL_API_NOEXCEPT17;
-typedef ALenum (AL_APIENTRY *LPEAXGETDIRECT)(ALCcontext *context, const struct _GUID *property_set_id, ALuint property_id, ALuint property_source_id, ALvoid *property_value, ALuint property_value_size) AL_API_NOEXCEPT17;
+typedef ALenum (AL_APIENTRY *LPEAXSETDIRECT)(ALCcontext *context, const struct _GUID *property_set_id, ALuint property_id, ALuint source_id, ALvoid *value, ALuint value_size) AL_API_NOEXCEPT17;
+typedef ALenum (AL_APIENTRY *LPEAXGETDIRECT)(ALCcontext *context, const struct _GUID *property_set_id, ALuint property_id, ALuint source_id, ALvoid *value, ALuint value_size) AL_API_NOEXCEPT17;
 typedef ALboolean (AL_APIENTRY *LPEAXSETBUFFERMODEDIRECT)(ALCcontext *context, ALsizei n, const ALuint *buffers, ALint value) AL_API_NOEXCEPT17;
 typedef ALenum (AL_APIENTRY *LPEAXGETBUFFERMODEDIRECT)(ALCcontext *context, ALuint buffer, ALint *pReserved) AL_API_NOEXCEPT17;
 #ifdef AL_ALEXT_PROTOTYPES
@@ -1064,8 +1064,8 @@ void AL_APIENTRY alGetBufferPtrvDirectSOFT(ALCcontext *context, ALuint buffer, A
 void AL_APIENTRY alSourcePlayAtTimeDirectSOFT(ALCcontext *context, ALuint source, ALint64SOFT start_time) AL_API_NOEXCEPT;
 void AL_APIENTRY alSourcePlayAtTimevDirectSOFT(ALCcontext *context, ALsizei n, const ALuint *sources, ALint64SOFT start_time) AL_API_NOEXCEPT;
 
-ALenum AL_APIENTRY EAXSetDirect(ALCcontext *context, const struct _GUID *property_set_id, ALuint property_id, ALuint property_source_id, ALvoid *property_value, ALuint property_value_size) AL_API_NOEXCEPT;
-ALenum AL_APIENTRY EAXGetDirect(ALCcontext *context, const struct _GUID *property_set_id, ALuint property_id, ALuint property_source_id, ALvoid *property_value, ALuint property_value_size) AL_API_NOEXCEPT;
+ALenum AL_APIENTRY EAXSetDirect(ALCcontext *context, const struct _GUID *property_set_id, ALuint property_id, ALuint source_id, ALvoid *value, ALuint value_size) AL_API_NOEXCEPT;
+ALenum AL_APIENTRY EAXGetDirect(ALCcontext *context, const struct _GUID *property_set_id, ALuint property_id, ALuint source_id, ALvoid *value, ALuint value_size) AL_API_NOEXCEPT;
 ALboolean AL_APIENTRY EAXSetBufferModeDirect(ALCcontext *context, ALsizei n, const ALuint *buffers, ALint value) AL_API_NOEXCEPT;
 ALenum AL_APIENTRY EAXGetBufferModeDirect(ALCcontext *context, ALuint buffer, ALint *pReserved) AL_API_NOEXCEPT;
 #endif
