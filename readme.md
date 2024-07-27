@@ -26,7 +26,7 @@ Supported Graphics Apis
 Supported Platforms
 -------------------
 - Linux
-- Windows (not tested)
+- Windows
 - MacOS
 - Web (not tested in a while)
 - Android (not tested in a while)
@@ -47,7 +47,7 @@ For building web install emscriptem from their git repo. Installing from package
         ```
     
   - For Windows:  
-    - mingw (tested on linux. tried so hard on windows but failed. im not touching windows with 10 foot stick). You do not have to use 32bit only. For the example i will be using 32bit gcc
+    - mingw (tested on linux. tried so hard on windows but failed. im not touching windows with 10 foot stick). You do not have to use 32bit only. For the example i will be using 32bit mingw
       1. ```shell
          git clone https://github.com/tabdroid-1/MaineCoon.git && mkdir MaineCoon/build && cd MaineCoon/build
           ```
