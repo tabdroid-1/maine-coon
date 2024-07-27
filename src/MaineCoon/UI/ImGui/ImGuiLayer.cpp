@@ -12,7 +12,7 @@
 
 #include <SDL.h>
 
-#include <glad/gl33.h>
+#include <gl33.h>
 
 #include "ImGuizmo.h"
 

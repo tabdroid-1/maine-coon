@@ -3,7 +3,7 @@
 #if !MC_PROFILE || defined(MC_PLATFORM_ANDROID)
 
 #define MC_PROFILE_SCOPE()
-#define MC_PROFILE_SCOPE_NAME(x) MC_CORE_TRACE(x)
+#define MC_PROFILE_SCOPE_NAME(x)
 #define MC_PROFILE_FRAME(x)
 #define MC_PROFILE_TAG(y, x)
 #define MC_PROFILE_LOG(text, size)

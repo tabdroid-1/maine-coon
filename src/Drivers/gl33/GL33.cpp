@@ -1,7 +1,7 @@
 
 #include "GL33.h"
 #if !defined(MC_PLATFORM_WEB) || !defined(MC_PLATFORM_ANDROID)
-#include <glad/gl33.h>
+#include <gl33.h>
 
 namespace MaineCoon {
 

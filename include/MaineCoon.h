@@ -4,7 +4,7 @@
 //
 // --- Random -----------------------
 #include <MaineCoon/Math/Math.h>
-#include <imgui/imgui.h>
+#include <imgui.h>
 // --- Core -------------------------
 #include <MaineCoon/Core/Application.h>
 #include <MaineCoon/Core/Assert.h>
@@ -32,10 +32,6 @@
 //
 // --- Debug -------------------------
 #include <MaineCoon/Debug/Instrumentor.h>
-// -----------------------------------
-//
-// --- UI ----------------------------
-#include <MaineCoon/UI/ImGui/ImGuiLayer.h>
 // -----------------------------------
 //
 // --- Util --------------------------

@@ -1,11 +1,11 @@
 #include "OpenGL33Context.h"
 #include "GL33.h"
 
-#include <tracy/tracy/TracyOpenGL.hpp>
+#include <tracy/TracyOpenGL.hpp>
 
 // #if !defined(MC_PLATFORM_WEB) && !defined(TB_PLATFORM_ANDROID)
 #define GLAD_GL_IMPLEMENTATION
-#include <glad/gl33.h>
+#include <gl33.h>
 
 #include <SDL.h>
 

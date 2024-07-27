@@ -1,7 +1,7 @@
 #include "OpenGLES3RendererAPI.h"
 #include "GLES3.h"
 
-#include <glad/gles3.h>
+#include <gles3.h>
 
 namespace MaineCoon {
 

@@ -1,7 +1,7 @@
 #include "OpenGL33RendererAPI.h"
 #include "GL33.h"
 
-#include <glad/gl33.h>
+#include <gl33.h>
 
 namespace MaineCoon {
 

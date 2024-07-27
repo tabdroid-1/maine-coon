@@ -1,4 +1,4 @@
-#include "SDL2/include/SDL_rwops.h"
+#include "SDL_rwops.h"
 #include <MaineCoon/Asset/AssetFile.h>
 #include <MaineCoon/Asset/AssetManager.h>
 #include <MaineCoon/Renderer/Texture.h>
