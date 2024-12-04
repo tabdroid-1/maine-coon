@@ -1,6 +1,10 @@
 
 ![MaineCoon](/resources/logo/Maine_Coon_Logo_Name_1024x256.png?raw=true "MaineCoon")
 
+# Discontinued
+## No longer needed since [tabby framework](https://github.com/tabdroid-1/tabby-framework) exists now.
+
+
 Ligth weight crossplatform application framework.
 
 (Maine Coon is a cat breed, not a slur. -_-)
